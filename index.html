@@ -132,25 +132,6 @@ body {
   background: linear-gradient(135deg, #FFFDF5 0%, #FFF9E6 100%) !important;
 }
 
-/* Style cho các thẻ Ngữ pháp HSK 1, 2, 3 nằm chung trong lưới lesson-grid */
-.lesson-card[data-grammar="hsk1"],
-.lesson-card[data-grammar="hsk2"],
-.lesson-card[data-grammar="hsk3"] {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: linear-gradient(135deg, #FFFDF5 0%, #FFF9E6 100%) !important;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.lesson-card[data-grammar="hsk1"]:hover,
-.lesson-card[data-grammar="hsk2"]:hover,
-.lesson-card[data-grammar="hsk3"]:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-}
-
 /* =========================================================
    THẺ TỪ VỰNG & NÉT VẼ HANZIWRITER
    ========================================================= */
@@ -11608,7 +11589,6 @@ const GRAMMAR_HSK79G = [
 {gr:"So sánh",cat:"Tu từ",cn:"比喻 vs 拟人 vs 排比",py:"bǐyù vs nǐrén vs páibǐ",vi:"比喻=ẩn dụ/so sánh (A giống B), 拟人=nhân hóa (vật như người), 排比=điệp ngữ (cấu trúc lặp)",eg:["时间像流水一样。(Shíjiān xiàng liúshuǐ yíyàng.) Thời gian như dòng nước — 比喻 so sánh","春天来了，花儿笑了。(Chūntiān lái le, huār xiào le.) Xuân đến, hoa cười — 拟人 hoa được nhân hóa","读书使人充实，讨论使人机智，写作使人严谨。— 排比 ba câu cùng cấu trúc"]},
 ];
 
-const countGrammar = (gData) => Object.keys(gData).length;
 
 // =========================================================================
 // 📌 1. CHỈNH SỬA THÔNG TIN GIÁO VIÊN & LINK ẢNH ĐẠI DIỆN TẠI ĐÂY
@@ -12007,80 +11987,27 @@ function renderSearchResults() {
   </div>`;
 }
 
-const grammarCard = (gData, level, color) => {
-  const hasData = typeof gData !== 'undefined' && gData && Object.keys(gData).length > 0;
-  const count = hasData ? Object.keys(gData).length : 0;
-  
-  return `
-    <div class="lesson-card" data-action="open-grammar" data-lv="${level}" data-grammar="${level}" style="border: 1.5px dashed var(--${color}); background: linear-gradient(135deg, #FFFDF5 0%, #FFF9E6 100%);">
-      <div class="lesson-num" style="color:var(--${color})">📖 Ngữ pháp ${level.toUpperCase()}</div>
-      <div class="lesson-title-cn" style="font-size:20px">${hasData ? count + ' điểm ngữ pháp' : 'Đang cập nhật...'}</div>
-      <div class="lesson-title-vi">${hasData ? 'Lý thuyết + Ví dụ theo từng bài' : 'Nội dung đang được biên soạn'}</div>
-    </div>`;
-};
-
 function renderHSK30View() {
-  const renderSection = (level, hskData, gramData, color, totalWords) => {
-    let cards = typeof hskData !== 'undefined' && Array.isArray(hskData) ? hskData.map(l => 
-      `<div class="lesson-card ${level}" data-lesson="${l.id}" data-lv="${level}">
-         <div class="lesson-num">第${l.id}课 · Bài ${l.id}</div>
-         <div class="lesson-title-cn">${l.title}</div>
-         <div class="lesson-title-vi">${l.titleVi}</div>
-         <div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div>
-       </div>`).join('') : '';
+  const reviewCard = (num, words, act, cls = '') => 
+    `<div class="lesson-card review-card ${cls}" data-action="${act}">
+      <div class="lesson-num" style="color:var(--gold)">⭐ Tổng ôn từ vựng</div>
+      <div class="lesson-title-cn">${words} từ HSK${num}</div>
+      <div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div>
+    </div>`;
 
-    return `
-      <div class="section-title" style="margin-top:36px">
-        <span class="badge badge-${level}">${level.toUpperCase()}</span> 新HSK教程 · ${totalWords} từ
-      </div>
-      <div class="lesson-grid">
-        <!-- Thẻ Tổng ôn từ vựng -->
-        <div class="lesson-card review-card" data-action="open-review" data-lv="${level}">
-           <div class="lesson-num" style="color:var(--gold)">⭐ Ôn tập từ vựng</div>
-           <div class="lesson-title-cn">Toàn bộ ${totalWords} từ</div>
-           <div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div>
-        </div>
-        
-        <!-- Thẻ Tra cứu Ngữ pháp động -->
-        ${grammarCard(gramData, level, color)}
-        
-        <!-- Các bài học chi tiết -->
-        ${cards}
-      </div>`;
-  };
+  let cards1 = typeof HSK1 !== 'undefined' ? HSK1.map(l => `<div class="lesson-card" data-lesson="${l.id}" data-lv="hsk1"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('') : '';
+  let cards2 = typeof HSK2 !== 'undefined' ? HSK2.map(l => `<div class="lesson-card hsk2" data-lesson="${l.id}" data-lv="hsk2"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('') : '';
 
   return `<div class="fade-in">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;scrollbar-width:none">
       ${['hsk1', 'hsk2', 'hsk3', 'hsk4', 'hsk5', 'hsk6', 'hsk79'].map(lv => `<button class="mode-tab ${state.level === lv ? 'active' : ''}" data-select-level="${lv}">${lv === 'hsk79' ? 'HSK 7-9' : lv.toUpperCase()}</button>`).join('')}
     </div>
 
-    ${renderSection('hsk1', typeof HSK1 !== 'undefined' ? HSK1 : [], typeof GRAMMAR_HSK1 !== 'undefined' ? GRAMMAR_HSK1 : {}, 'red', 300)}
-    ${renderSection('hsk2', typeof HSK2 !== 'undefined' ? HSK2 : [], typeof GRAMMAR_HSK2 !== 'undefined' ? GRAMMAR_HSK2 : {}, 'orange', 200)}
-    ${renderSection('hsk3', typeof HSK3 !== 'undefined' ? HSK3 : [], typeof GRAMMAR_HSK3 !== 'undefined' ? GRAMMAR_HSK3 : {}, 'gold', 300)}
-  </div>`;
-}
+    <div class="section-title"><span class="badge badge-hsk1">HSK 1</span> 新HSK教程 1 <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${getTotal(HSK1)} từ</span></div>
+    <div class="lesson-grid">${reviewCard(1, 300, 'open-review')}${cards1}</div>
 
-function renderGrammarDetail() {
-  const gKey = 'GRAMMAR_' + (state.level ? state.level.toUpperCase() : 'HSK1');
-  const gData = window[gKey] || {};
-  
-  const items = Object.entries(gData).map(([id, g]) => `
-    <div style="background: white; border: 1.5px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow-sm);">
-      <div style="font-size: 13px; font-weight: 700; color: var(--red); margin-bottom: 6px;">Điểm ngữ pháp #${id}</div>
-      <div style="font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">${g.cn || g.gr || ''}</div>
-      <div style="font-size: 14px; font-weight: 600; color: var(--ink-light); margin-bottom: 8px;">🇻🇳 ${g.vi || ''}</div>
-      ${g.ex ? `<div style="font-size: 14px; color: var(--ink); background: var(--cream); padding: 10px 14px; border-radius: 8px; margin-top: 8px;">💡 <b>Ví dụ:</b> ${g.ex}</div>` : ''}
-    </div>
-  `).join('');
-
-  return `<div class="fade-in">
-    <button class="back-btn" data-action="back">← Quay lại danh sách</button>
-    <div class="section-title">
-      <span class="badge badge-${state.level}">${state.level ? state.level.toUpperCase() : 'HSK'}</span> Tra cứu Ngữ pháp chi tiết
-    </div>
-    <div style="margin-top: 20px;">
-      ${items || '<div style="text-align:center; padding:40px; color:var(--ink-light);">Nội dung ngữ pháp cấp độ này đang được cập nhật.</div>'}
-    </div>
+    <div class="section-title"><span class="badge badge-hsk2">HSK 2</span> 新HSK教程 2 <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${getTotal(HSK2)} từ</span></div>
+    <div class="lesson-grid">${reviewCard(2, 200, 'open-review2', 'hsk2')}${cards2}</div>
   </div>`;
 }
 
@@ -12273,13 +12200,15 @@ function renderReview() {
 
 // ROUTER MAP
 const viewRoutes = {
-  'home': renderHome,
-  'hsk30': renderHSK30View,
-  'review': renderReviewView,
-  'grammar-detail': renderGrammarDetail, // 👈 Bắt buộc phải có dòng này
-  'teacher': renderTeacherView,
-  'tools': renderToolsView,
-  'saved': renderSavedView
+  home: renderHome,
+  hsk30: renderHSK30View,
+  teacher: renderTeacherView,       // Thông tin Giáo viên
+  mySaved: renderMySavedView,
+  devProducts: renderDevProductsView, // Đang phát triển
+  level: renderLevel,
+  lesson: renderLesson,
+  setDetail: renderSetDetail,
+  review: renderReview
 };
 
 function render() {
@@ -12300,26 +12229,6 @@ function render() {
     });
   }
 }
-
-document.addEventListener('click', (e) => {
-  const target = e.target.closest('[data-action]');
-  if (!target) return;
-
-  const action = target.dataset.action;
-  const level = target.dataset.lv;
-
-  if (action === 'open-review') {
-    state.view = 'review';
-    state.level = level;
-    render();
-  }
-  
-  if (action === 'open-grammar') {
-    state.view = 'grammar-detail';
-    state.level = level;
-    render();
-  }
-});
 
 // =========================================================================
 // 8. EVENT DELEGATION
