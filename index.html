@@ -6,7 +6,7 @@
 <title>EzReach Chinese for everyone @MINH — HSK 3.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* --- 1. BẢNG MÀU XANH TINH TẾ & DỊU MẮT (:root) --- */
+/* --- 1. BẢNG MÀU XANH NHẠT TINH TẾ & DỊU MẮT --- */
 :root {
   --red: #2B7A78;           /* Xanh chủ đạo thanh lịch */
   --red-light: #3AAFA9;     /* Xanh ngọc dịu nhẹ */
@@ -26,6 +26,7 @@
   --shadow-sm: 0 2px 4px rgba(23, 37, 42, 0.03);
   --shadow: 0 4px 16px rgba(23, 37, 42, 0.05);
   --shadow-lg: 0 12px 32px rgba(23, 37, 42, 0.08);
+  --shadow-md: 0 6px 20px rgba(23, 37, 42, 0.1);
   --radius: 16px;
 }
 
@@ -41,95 +42,50 @@ body {
 /* Header & Logo */
 .header {
   background: linear-gradient(135deg, #17252A 0%, #2B7A78 100%);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   box-shadow: 0 4px 20px rgba(23, 37, 42, 0.15);
 }
 .header-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 1080px; margin: 0 auto; padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between;
 }
 .logo {display: flex; align-items: center; gap: 12px; cursor: pointer;}
 .logo-icon {
-  width: 40px; height: 40px;
-  background: var(--gold);
-  border-radius: 10px;
+  width: 40px; height: 40px; background: var(--gold); border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 22px; font-weight: 700; color: #FFFFFF;
+  font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: #FFFFFF;
 }
 .logo-text {color: white; font-size: 19px; font-weight: 700;}
 .logo-sub {color: rgba(255,255,255,0.75); font-size: 11px;}
 
 .streak-badge {
-  background: rgba(255, 255, 255, 0.15);
-  color: #FBBF24;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15); color: #FBBF24;
+  padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
 }
 
 /* Navbar Pills */
 .nav {
-  background: rgba(240, 247, 247, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 64px;
-  z-index: 99;
+  background: rgba(240, 247, 247, 0.9); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border); position: sticky; top: 64px; z-index: 99;
 }
 .nav-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  display: flex;
-  gap: 8px;
-  padding: 10px 16px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  max-width: 1080px; margin: 0 auto; display: flex; gap: 8px;
+  padding: 10px 16px; overflow-x: auto; scrollbar-width: none;
 }
 .nav-inner::-webkit-scrollbar {display: none;}
 .nav-btn {
-  flex-shrink: 0;
-  padding: 8px 20px;
-  border: 1px solid transparent;
-  border-radius: 9999px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background: transparent;
-  color: var(--ink-light);
+  flex-shrink: 0; padding: 8px 20px; border: 1px solid transparent;
+  border-radius: 9999px; font-family: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s ease; background: transparent; color: var(--ink-light);
   white-space: nowrap;
 }
 .nav-btn:hover {background: #E2F0F0; color: var(--ink);}
 .nav-btn.active {
-  background: var(--red);
-  color: white;
-  box-shadow: 0 2px 10px rgba(43, 122, 120, 0.25);
+  background: var(--red); color: white; box-shadow: 0 2px 10px rgba(43, 122, 120, 0.25);
 }
 
 /* Layout Content Main */
-.main {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 24px 16px 100px;
-}
-.home-hero {text-align: center; padding: 32px 20px 24px;}
-.home-hero h1 {font-family: 'Noto Serif SC', serif; font-size: 38px; font-weight: 700; color: var(--red); margin-bottom: 8px;}
-.home-hero p {font-size: 15px; color: var(--ink-light); max-width: 540px; margin: 0 auto 24px; line-height: 1.6;}
-
-.stats-row {display: flex; justify-content: center; gap: 32px; margin-bottom: 28px;}
-.stat {text-align: center;}
-.stat-num {font-size: 28px; font-weight: 700; color: var(--red); font-family: 'Noto Serif SC', serif;}
-.stat-label {font-size: 12px; color: var(--ink-light); margin-top: 2px;}
+.main {max-width: 1080px; margin: 0 auto; padding: 24px 16px 100px;}
 
 .search-input {
   width: 100%; padding: 12px 20px; border-radius: 24px;
@@ -139,11 +95,16 @@ body {
 }
 .search-input:focus {border-color: var(--red); box-shadow: 0 0 0 3px rgba(43, 122, 120, 0.15);}
 
+.btn-primary-sm {
+  background: var(--red); color: white; border: none;
+  padding: 8px 18px; border-radius: 10px; font-weight: 600;
+  font-size: 13px; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-primary-sm:hover {opacity: 0.9;}
+
 .section-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px; font-weight: 700; color: var(--ink);
-  margin: 28px 0 14px; padding-left: 12px;
-  border-left: 4px solid var(--red);
+  font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; color: var(--ink);
+  margin: 24px 0 14px; padding-left: 12px; border-left: 4px solid var(--red);
   display: flex; align-items: center; gap: 10px;
 }
 .section-title .badge {font-size: 12px; padding: 3px 12px; border-radius: 12px; color: white; font-weight: 600;}
@@ -151,15 +112,13 @@ body {
 .badge-hsk2 {background: var(--orange);}
 
 .lesson-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 14px; margin-bottom: 12px;
 }
 .lesson-card {
   background: var(--paper); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 18px 20px;
-  cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius); padding: 18px 20px; cursor: pointer;
+  transition: all 0.25s; position: relative; overflow: hidden; box-shadow: var(--shadow-sm);
 }
 .lesson-card:hover {transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--red-light);}
 .lesson-num {font-family: 'Noto Serif SC', serif; font-size: 12px; font-weight: 700; color: var(--red); margin-bottom: 4px;}
@@ -173,31 +132,76 @@ body {
   background: linear-gradient(135deg, #FFFDF5 0%, #FFF9E6 100%) !important;
 }
 
-/* Chỗ hiển thị từ vựng / Bookmark / Flashcard */
-.word-list {display: flex; flex-direction: column; gap: 8px;}
+/* =========================================================
+   THẺ TỪ VỰNG (WORD ITEM) & MÔ PHỎNG NÉT VẼ
+   ========================================================= */
+.word-list {display: flex; flex-direction: column; gap: 10px;}
 .word-item {
   background: var(--paper); border: 1px solid var(--border);
-  border-radius: 12px; padding: 14px 18px;
-  display: grid; grid-template-columns: auto auto 1fr auto;
-  gap: 14px; align-items: center; box-shadow: var(--shadow-sm); cursor: pointer;
+  border-radius: 16px; padding: 16px 20px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  position: relative; box-shadow: var(--shadow-sm); cursor: pointer;
+  transition: border-color 0.2s;
 }
-.word-hanzi {font-family: 'Noto Sans SC', sans-serif; font-size: 24px; font-weight: 700; color: var(--ink);}
-.word-pinyin {font-size: 14px; color: var(--red); font-weight: 500;}
-.word-meaning {font-size: 13px; color: var(--ink-light);}
+.word-item:hover {border-color: var(--red-light);}
 
-.fav-btn {background: none; border: none; font-size: 20px; color: #D1D5DB; cursor: pointer; padding: 4px 8px;}
+.word-left-box {
+  display: flex; align-items: center; gap: 12px; min-width: 140px;
+}
+.word-hanzi {font-family: 'Noto Sans SC', sans-serif; font-size: 26px; font-weight: 700; color: var(--ink);}
+
+.word-info {flex: 1; min-width: 180px; padding-right: 30px;}
+.word-pinyin {font-size: 14px; color: var(--red); font-weight: 600; margin-bottom: 2px;}
+.word-meaning {font-size: 13px; color: var(--ink-light); line-height: 1.4;}
+
+/* Nút Loa Âm thanh chuẩn */
+.audio-btn {
+  background: #E6F4F4; border: none; cursor: pointer;
+  font-size: 16px; padding: 6px 10px; border-radius: 8px;
+  transition: all 0.15s; color: var(--red); flex-shrink: 0;
+}
+.audio-btn:hover {background: var(--red); color: white;}
+
+/* Ngôi sao Bookmark góc phải */
+.fav-btn {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; font-size: 22px; color: #D1D5DB;
+  cursor: pointer; transition: transform 0.2s;
+}
 .fav-btn.active {color: var(--gold); transform: scale(1.1);}
+
+.word-pos {
+  font-size: 11px; padding: 3px 10px; border-radius: 8px;
+  background: #E6F0F0; color: var(--ink-light); font-weight: 500;
+  margin-top: 6px; width: fit-content;
+}
+
+/* Khung nét vẽ HanziWriter chuẩn Flexbox */
+.word-strokes {
+  width: 100%; flex-basis: 100%;
+  padding-top: 14px; border-top: 1px dashed var(--border); margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+}
+.stroke-char {display: flex; flex-direction: column; align-items: center; gap: 4px;}
+.stroke-char svg {border: 1px solid var(--border); border-radius: 10px; background: white;}
+.stroke-char span {font-size: 11px; color: var(--ink-light);}
+.stroke-play {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
+  font-family: inherit; font-size: 12px; cursor: pointer; background: white;
+  color: var(--red); font-weight: 600; transition: all 0.2s; height: fit-content;
+}
+.stroke-play:hover {background: var(--red); color: white;}
 
 .back-btn {display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink-light); background: none; border: none; cursor: pointer; margin-bottom: 14px;}
 .back-btn:hover {color: var(--red);}
-.lesson-view-title {font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: var(--ink);}
+.lesson-view-title {font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: var(--ink);}
 .lesson-view-sub {font-size: 14px; color: var(--ink-light); margin-top: 6px; margin-bottom: 20px;}
 
 .mode-tabs {display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;}
 .mode-tab {padding: 10px 22px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; background: white; color: var(--ink-light);}
 .mode-tab.active {border-color: var(--red); background: var(--red); color: white;}
 
-/* Flashcard / Quiz */
+/* Flashcard & Quiz */
 .flashcard-container {display: flex; flex-direction: column; align-items: center; padding: 16px 0;}
 .flashcard {width: 100%; max-width: 440px; min-height: 300px; perspective: 1000px; cursor: pointer; margin-bottom: 22px;}
 .flashcard-inner {position: relative; width: 100%; height: 100%; min-height: 300px; transition: transform 0.6s; transform-style: preserve-3d;}
@@ -217,47 +221,42 @@ body {
 .fc-btn.next {background: var(--red); color: white;}
 
 .quiz-container {max-width: 560px; margin: 0 auto; padding: 16px 0;}
-.quiz-options {display: flex; flex-direction: column; gap: 9px;}
-.quiz-option {width: 100%; padding: 14px 18px; background: var(--paper); border: 1.5px solid var(--border); border-radius: 14px; font-size: 15px; cursor: pointer; text-align: left;}
+.quiz-question {text-align: center; margin-bottom: 24px;}
+.quiz-q-label {font-size: 13px; color: var(--ink-light); margin-bottom: 8px;}
+.quiz-q-hanzi {font-family: 'Noto Serif SC', serif; font-size: 40px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3;}
+.quiz-q-pinyin {font-size: 15px; color: var(--red); font-weight: 600; line-height: 1.5;}
+
+.quiz-options {display: flex; flex-direction: column; gap: 10px;}
+.quiz-option {width: 100%; padding: 14px 18px; background: var(--paper); border: 1.5px solid var(--border); border-radius: 14px; font-size: 15px; cursor: pointer; text-align: left; line-height: 1.4;}
 .quiz-option.correct {border-color: var(--green); background: #F0FDF4; color: var(--green); font-weight: 600;}
 .quiz-option.wrong {border-color: #E53E3E; background: #FFF5F5; color: #C53030;}
 
-/* TRANG GIỚI THIỆU GIÁO VIÊN */
+/* TRANG GIỚI THIỆU GIÁO VIÊN VỚI AVATAR ẢNH THẬT */
 .teacher-container {
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  box-shadow: var(--shadow-lg);
-  max-width: 800px;
-  margin: 0 auto;
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px; box-shadow: var(--shadow-lg);
+  max-width: 800px; margin: 0 auto;
 }
 .teacher-header {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 24px;
-  margin-bottom: 24px;
+  display: flex; gap: 24px; align-items: center;
+  border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 24px;
 }
 .teacher-avatar {
-  width: 100px; height: 100px;
-  border-radius: 50%;
+  width: 100px; height: 100px; border-radius: 50%;
   background: linear-gradient(135deg, var(--red) 0%, var(--red-light) 100%);
   color: white; font-size: 42px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
   box-shadow: var(--shadow-md); flex-shrink: 0;
+  overflow: hidden; border: 3px solid white;
+}
+.teacher-avatar img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
 }
 .teacher-name {font-size: 24px; font-weight: 700; color: var(--ink);}
 .teacher-title {font-size: 14px; color: var(--red); font-weight: 600; margin-top: 2px;}
 
 .info-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 12px;}
-.info-card {
-  background: var(--cream);
-  border-radius: 14px;
-  padding: 16px;
-  border: 1px solid var(--border);
-}
+.info-card {background: var(--cream); border-radius: 14px; padding: 16px; border: 1px solid var(--border);}
 .info-card-title {font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; margin-bottom: 6px;}
 .info-card-text {font-size: 14px; font-weight: 600; color: var(--ink);}
 .info-card-sub {font-size: 12px; color: var(--ink-light); margin-top: 2px;}
@@ -267,8 +266,10 @@ body {
 @media(max-width:600px){
   .teacher-header {flex-direction: column; text-align: center;}
   .info-grid {grid-template-columns: 1fr;}
+  .word-left-box {min-width: auto;}
 }
 </style>
+
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 </head>
 <body>
@@ -278,18 +279,23 @@ body {
 // 📌 1. CHỈNH SỬA THÔNG TIN GIÁO VIÊN DỄ DÀNG TẠI ĐÂY
 // =========================================================================
 const TEACHER_INFO = {
-  name: "Nguyễn Đình Minh",
-  title: "Giáo viên Tiếng Trung · HSK 6 & HSKK Cao Cấp",
-  avatarText: "M",
-  location: "HSK Nha Trang & Đào tạo Online Toàn Quốc",
+  name: "Đình Minh Nguyễn",
+  title: "Giáo viên & Chuyên gia Phát triển Tài liệu Tiếng Trung · HSK 6 & HSKK Cao Cấp",
+  
+  // Đường dẫn ảnh đại diện (Thay bằng tên file ảnh của bạn trong thư mục, ví dụ: "avatar.jpg" hoặc để trống nếu dùng chữ cái)
+  avatarUrl: "avatar.jpg", 
+  avatarText: "明",
+  
+  location: "Nha Trang & Đào tạo Online Toàn Quốc",
   zalo: "0332364199",
-  bio: "Chuyên biên soạn tài liệu và đào tạo luyện thi HSK 3.0 các cấp độ từ HSK 1 đến HSK 6. Lộ trình học bài bản, phản xạ từ vựng linh hoạt.",
+  
+  bio: "Chuyên nghiên cứu, biên soạn tài liệu và đào tạo luyện thi HSK 3.0 từ cấp độ căn bản đến nâng cao. Cung cấp hệ thống học từ vựng, ngữ pháp và công cụ tra cứu chữ Hán trực quan.",
   
   highlights: [
-    { title: "Bằng cấp & Chứng chỉ", main: "HSK 6 & HSKK Cao Cấp", sub: "Trình độ ngôn ngữ chuẩn quốc tế" },
-    { title: "Kinh nghiệm", main: "Nhiều năm giảng dạy HSK", sub: "Đã hướng dẫn hàng trăm học viên đạt điểm cao" },
-    { title: "Phương pháp", main: "Học qua Flashcard & Quiz", sub: "Ghi nhớ ngắt quãng giúp nhớ từ cực lâu" },
-    { title: "Hình thức học", main: "Lớp Online & Offline", sub: "Hỗ trợ giải đáp thắc mắc 24/7" }
+    { title: "Chuyên môn", main: "HSK 6 & HSKK Cao Cấp", sub: "Phản xạ giao tiếp và luyện thi chuyên sâu" },
+    { title: "Tài liệu", main: "Giáo trình HSK 3.0 chuẩn hóa", sub: "Hệ thống hóa từ vựng, ngữ pháp, Hán Việt" },
+    { title: "Phương pháp", main: "Flashcard & Trắc nghiệm", sub: "Ghi nhớ thông minh qua hệ thống tương tác" },
+    { title: "Hỗ trợ học tập", main: "Online & Offline", sub: "Giải đáp thắc mắc và đồng hành sát sao" }
   ]
 };
 
@@ -11549,9 +11555,11 @@ const GRAMMAR_HSK79G = [
 {gr:"So sánh",cat:"Tu từ",cn:"比喻 vs 拟人 vs 排比",py:"bǐyù vs nǐrén vs páibǐ",vi:"比喻=ẩn dụ/so sánh (A giống B), 拟人=nhân hóa (vật như người), 排比=điệp ngữ (cấu trúc lặp)",eg:["时间像流水一样。(Shíjiān xiàng liúshuǐ yíyàng.) Thời gian như dòng nước — 比喻 so sánh","春天来了，花儿笑了。(Chūntiān lái le, huār xiào le.) Xuân đến, hoa cười — 拟人 hoa được nhân hóa","读书使人充实，讨论使人机智，写作使人严谨。— 排比 ba câu cùng cấu trúc"]},
 ];
 
+
 // =========================================================================
-// 3. LOGIC APP & STATE MANAGEMENT
+// TRẠNG THÁI ỨNG DỤNG (APP STATE)
 // =========================================================================
+
 let state = {
   view: 'home',
   level: 'hsk1',
@@ -11569,6 +11577,9 @@ let state = {
   quizQuestions: []
 };
 
+// =========================================================================
+// 3. UTILS & LOCALSTORAGE
+// =========================================================================
 function getFavorites() {
   return JSON.parse(localStorage.getItem('ez_fav_words') || '[]');
 }
@@ -11603,7 +11614,7 @@ function shuffle(a) {
   const b = [...a];
   for (let i = b.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [b[i], b[j]] = [b[j], b[i]];
+    [b[i], b[j]] = [b[i], b[j]];
   }
   return b;
 }
@@ -11617,29 +11628,17 @@ function getLessons() {
 }
 
 function getAllWords() {
-  return [...HSK1_ALL, ...HSK2_ALL, ...HSK3_ALL];
+  const hsk1Words = typeof HSK1_ALL !== 'undefined' ? HSK1_ALL : HSK1.flatMap(l => l.words);
+  const hsk2Words = typeof HSK2_ALL !== 'undefined' ? HSK2_ALL : HSK2.flatMap(l => l.words);
+  const hsk3Words = typeof HSK3_ALL !== 'undefined' ? HSK3_ALL : HSK3.flatMap(l => l.words);
+  return [...hsk1Words, ...hsk2Words, ...hsk3Words];
 }
 
 function getLevelWords(level = state.level) {
-  if (level === 'hsk1') return HSK1_ALL;
-  if (level === 'hsk2') return HSK2_ALL;
-  if (level === 'hsk3') return HSK3_ALL;
-  return HSK1_ALL;
-}
-
-function getHSKSetData(level = state.level) {
-  const all = getLevelWords(level);
-  const sets = [];
-  const sz = 20;
-  for (let i = 0; i < all.length; i += sz) {
-    sets.push({
-      id: Math.floor(i / sz) + 1,
-      words: all.slice(i, i + sz),
-      start: i + 1,
-      end: Math.min(i + sz, all.length)
-    });
-  }
-  return { all, num: level.replace('hsk', ''), color: '#2B7A78', bg: '#E6F4F4', sets };
+  if (level === 'hsk1') return typeof HSK1_ALL !== 'undefined' ? HSK1_ALL : HSK1.flatMap(l => l.words);
+  if (level === 'hsk2') return typeof HSK2_ALL !== 'undefined' ? HSK2_ALL : HSK2.flatMap(l => l.words);
+  if (level === 'hsk3') return typeof HSK3_ALL !== 'undefined' ? HSK3_ALL : HSK3.flatMap(l => l.words);
+  return [];
 }
 
 // =========================================================================
@@ -11666,31 +11665,6 @@ function buildQuiz(sourceWords, poolWords, type = 'meaning', count = 30) {
   state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = false; state.quizDone = false;
 }
 
-function buildFillIn(sourceWords, poolWords, count = 20) {
-  const pool = sourceWords.filter(w => w.ex && w.ex.length > 2);
-  const words = shuffle(pool).slice(0, Math.min(count, pool.length));
-  
-  state.quizQuestions = words.map(w => {
-    const word = w.hanzi || w.h;
-    let ex = w.ex;
-    let idx = ex.indexOf('(');
-    let cn = idx > 0 ? ex.substring(0, idx).trim() : ex.split(/[；;]/)[0];
-    let vi = idx > 0 ? ex.substring(idx) : w.vi;
-    let blank = cn.replace(word, '______');
-    
-    if (blank === cn) {
-      for (let i = 0; i < word.length; i++) {
-        let ch = word.charAt(i);
-        if (cn.includes(ch)) { blank = cn.replace(ch, '__'); break; }
-      }
-    }
-    const wr = shuffle(poolWords.filter(x => (x.hanzi || x.h) !== word).map(x => x.hanzi || x.h)).slice(0, 3);
-    const opts = shuffle([word, ...wr]);
-    return { sentence: blank, hint: vi || w.vi, ci: opts.indexOf(word), options: opts, sel: -1 };
-  });
-  state.quizIndex = 0; state.quizScore = 0; state.quizAnswered = false; state.quizDone = false;
-}
-
 // =========================================================================
 // 5. REUSABLE UI COMPONENTS
 // =========================================================================
@@ -11700,21 +11674,23 @@ function renderWordListUI(words) {
     const hanzi = w.hanzi || w.h;
     const pinyin = w.pinyin || w.p;
     const pos = w.pos || w.ps || '';
-    const hv = w.hv ? `<span style="color:var(--gold);font-size:12px">${w.hv}</span>` : '';
+    const hv = w.hv ? `<span style="color:var(--gold);font-size:12px;margin-left:6px">${w.hv}</span>` : '';
     const ex = w.ex ? `<div style="font-size:12px;color:#999;margin-top:3px;line-height:1.4">${w.ex}</div>` : '';
     const meaning = w.en ? `${w.vi} · ${w.en}` : w.vi;
     const isFav = favs.includes(hanzi);
 
     return `<div class="word-item">
-      <button class="audio-btn" data-speak="${hanzi}">🔊</button>
-      <div class="word-hanzi">${hanzi}</div>
+      <div class="word-left-box">
+        <button class="audio-btn" data-speak="${hanzi}">🔊</button>
+        <div class="word-hanzi">${hanzi}</div>
+      </div>
       <div class="word-info">
         <div class="word-pinyin">${pinyin} ${hv}</div>
         <div class="word-meaning">${meaning}</div>
         ${ex}
+        ${pos ? `<div class="word-pos">${pos}</div>` : ''}
       </div>
       <button class="fav-btn ${isFav ? 'active' : ''}" data-fav="${hanzi}">${isFav ? '★' : '☆'}</button>
-      ${pos ? `<div class="word-pos">${pos}</div>` : ''}
     </div>`;
   }).join('');
   return `<div class="toolbar"><span class="word-count">${words.length} từ</span></div><div class="word-list">${items}</div>`;
@@ -11733,8 +11709,6 @@ function renderFlashcardUI(words, shuffleAction = 'fc-shuffle') {
   const pinyin = w.pinyin || w.p;
   const favs = getFavorites();
   const isFav = favs.includes(hanzi);
-  const hvHtml = w.hv ? `<div style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:10px">${w.hv}</div>` : '';
-  const exHtml = w.ex ? `<div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:12px;line-height:1.5">${w.ex}</div>` : '';
 
   return `<div class="flashcard-container">
     <div class="flashcard-progress">${state.fcIndex + 1} / ${state.fcShuffled.length}</div>
@@ -11748,9 +11722,7 @@ function renderFlashcardUI(words, shuffleAction = 'fc-shuffle') {
         </div>
         <div class="flashcard-back">
           <div class="fc-pinyin">${pinyin}</div>
-          ${hvHtml}
           <div class="fc-meaning">${w.vi}</div>
-          ${exHtml}
         </div>
       </div>
     </div>
@@ -11766,43 +11738,15 @@ function renderQuizUI(restartAction = 'quiz-restart') {
   if (state.quizDone) {
     const t = state.quizQuestions.length;
     const p = Math.round((state.quizScore / t) * 100);
-    const m = p >= 90 ? '🎉 Xuất sắc!' : p >= 70 ? '👍 Khá tốt!' : p >= 50 ? '💪 Cần ôn thêm!' : '📚 Hãy ôn lại nhé!';
     return `<div class="quiz-result fade-in">
       <div class="quiz-score">${state.quizScore}/${t}</div>
-      <div class="quiz-score-label">${m} Đúng ${p}%</div>
+      <div class="quiz-score-label">Đúng ${p}%</div>
       <button class="quiz-restart" data-action="${restartAction}">Làm lại</button>
     </div>`;
   }
   const q = state.quizQuestions[state.quizIndex];
   if (!q) return '';
-  const pr = (state.quizIndex / state.quizQuestions.length) * 100;
   
-  const optHtml = q.options.map((o, i) => {
-    let c = '';
-    if (state.quizAnswered) {
-      if (i === q.ci) c = 'correct';
-      else if (i === q.sel) c = 'wrong';
-    }
-    return `<button class="quiz-option ${c}" data-quiz-opt="${i}" ${state.quizAnswered ? 'disabled' : ''} style="${q.isCn ? 'font-family:Noto Sans SC,sans-serif;font-size:20px' : ''}">${o}</button>`;
-  }).join('');
-
-  return `<div class="quiz-container fade-in">
-    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pr}%"></div></div>
-    <div class="quiz-question">
-      <div class="quiz-q-label">Câu ${state.quizIndex + 1}/${state.quizQuestions.length}</div>
-      <div class="quiz-q-hanzi">${q.prompt}</div>
-      <div class="quiz-q-pinyin">${q.sub}</div>
-    </div>
-    <div class="quiz-options">${optHtml}</div>
-  </div>`;
-}
-
-function renderFillInUI(restartAction = 'quiz-restart') {
-  if (state.quizDone) return renderQuizUI(restartAction);
-  const q = state.quizQuestions[state.quizIndex];
-  if (!q) return '';
-  const pr = (state.quizIndex / state.quizQuestions.length) * 100;
-
   const optHtml = q.options.map((o, i) => {
     let c = '';
     if (state.quizAnswered) {
@@ -11813,11 +11757,10 @@ function renderFillInUI(restartAction = 'quiz-restart') {
   }).join('');
 
   return `<div class="quiz-container fade-in">
-    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pr}%"></div></div>
     <div class="quiz-question">
-      <div class="quiz-q-label">Câu ${state.quizIndex + 1}/${state.quizQuestions.length} — Điền từ vào chỗ trống</div>
-      <div style="font-family:Noto Sans SC,sans-serif;font-size:24px;font-weight:500;color:var(--ink);line-height:1.6;margin:12px 0">${q.sentence}</div>
-      <div class="quiz-q-pinyin" style="font-size:13px">${q.hint}</div>
+      <div class="quiz-q-label">Câu ${state.quizIndex + 1}/${state.quizQuestions.length}</div>
+      <div class="quiz-q-hanzi">${q.prompt}</div>
+      <div class="quiz-q-pinyin">${q.sub}</div>
     </div>
     <div class="quiz-options">${optHtml}</div>
   </div>`;
@@ -11846,7 +11789,7 @@ function renderNav() {
   return `<div class="nav">
     <div class="nav-inner">
       <button class="nav-btn ${state.view === 'home' ? 'active' : ''}" data-nav="home">Trang chủ</button>
-      <button class="nav-btn ${['hsk30', 'level', 'lesson', 'setDetail'].includes(state.view) ? 'active' : ''}" data-nav="hsk30">HSK 3.0</button>
+      <button class="nav-btn ${['hsk30', 'level', 'lesson'].includes(state.view) ? 'active' : ''}" data-nav="hsk30">HSK 3.0</button>
       <button class="nav-btn ${state.view === 'teacher' ? 'active' : ''}" data-nav="teacher">Giới thiệu GV</button>
       <button class="nav-btn ${state.view === 'mySaved' ? 'active' : ''}" data-nav="mySaved">⭐ Từ vựng đã lưu (${getFavorites().length})</button>
       <button class="nav-btn ${state.view === 'devProducts' ? 'active' : ''}" data-nav="devProducts">Thử nghiệm</button>
@@ -11855,28 +11798,64 @@ function renderNav() {
 }
 
 // =========================================================================
-// 7. VIEWS
+// 7. VIEWS (TRANG CHỦ DASHBOARD + CÁC MỤC TÁCH BIỆT)
 // =========================================================================
 
-// TRANG CHỦ
+// TRANG CHỦ DASHBOARD (GỌN GÀNG - KHÔNG LẶP DỰ DỮ LIỆU)
 function renderHome() {
-  return `<div class="home-hero fade-in">
-    <h1>新HSK教程 3.0</h1>
-    <p>Hệ thống tự học & tổng ôn từ vựng - ngữ pháp tiếng Trung hiện đại</p>
-    
-    <!-- Thanh Tìm kiếm Real-time -->
-    <div style="max-width:520px;margin:0 auto 24px">
-      <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm nhanh Hán tự, Pinyin hoặc Tiếng Việt..." value="${state.searchQuery}">
+  const streak = updateStreak();
+  const favs = getFavorites();
+
+  return `<div class="fade-in">
+    <div style="background:linear-gradient(135deg, #17252A 0%, #2B7A78 100%);border-radius:24px;padding:36px 28px;color:white;text-align:center;margin-bottom:24px;box-shadow:var(--shadow-lg)">
+      <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:6px">HỆ THỐNG TỰ HỌC TIẾNG TRUNG 3.0</div>
+      <h1 style="font-family:'Noto Serif SC',serif;font-size:32px;font-weight:700;margin-bottom:12px">Lộ Trình Chinh Phục HSK 3.0</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.85);max-width:540px;margin:0 auto 24px;line-height:1.6">Luyện tập từ vựng & ngữ pháp mỗi ngày qua Flashcard, phản xạ Trắc nghiệm và Mô phỏng nét vẽ.</p>
+      
+      <!-- Ô Tìm kiếm Real-time -->
+      <div style="max-width:480px;margin:0 auto 20px">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tra nhanh Hán tự, Pinyin hoặc Tiếng Việt..." value="${state.searchQuery}">
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:24px;margin-top:20px">
+        <div><div style="font-size:22px;font-weight:700;color:#FBBF24">🔥 ${streak}</div><div style="font-size:11px;color:rgba(255,255,255,0.7)">Ngày liên tục</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.2)"></div>
+        <div><div style="font-size:22px;font-weight:700;color:white">9</div><div style="font-size:11px;color:rgba(255,255,255,0.7)">Cấp độ HSK</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.2)"></div>
+        <div><div style="font-size:22px;font-weight:700;color:#FBBF24">⭐ ${favs.length}</div><div style="font-size:11px;color:rgba(255,255,255,0.7)">Từ đã lưu</div></div>
+      </div>
     </div>
 
-    <div class="stats-row">
-      <div class="stat"><div class="stat-num">9</div><div class="stat-label">Cấp độ</div></div>
-      <div class="stat"><div class="stat-num">11,000</div><div class="stat-label">Từ vựng</div></div>
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Chế độ ôn</div></div>
-    </div>
-  </div>
+    ${state.searchQuery ? renderSearchResults() : `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:28px">
+      <div class="lesson-card" style="background:white;padding:24px" data-nav="hsk30">
+        <div style="font-size:32px;margin-bottom:8px">📚</div>
+        <div style="font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px">Kho Bài Học HSK 3.0</div>
+        <div style="font-size:13px;color:var(--ink-light);margin-bottom:16px">Trọn bộ từ vựng & bài học từ HSK 1 đến HSK 7-9.</div>
+        <button class="btn-primary-sm">Vào học ngay →</button>
+      </div>
 
-  ${state.searchQuery ? renderSearchResults() : renderHSK30View()}`;
+      <div class="lesson-card" style="background:white;padding:24px" data-nav="mySaved">
+        <div style="font-size:32px;margin-bottom:8px">⭐</div>
+        <div style="font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px">Sổ Từ Vựng Đã Lưu</div>
+        <div style="font-size:13px;color:var(--ink-light);margin-bottom:16px">Tập trung ôn tập ${favs.length} từ khó mà bạn đã đánh dấu ☆.</div>
+        <button class="btn-primary-sm" style="background:var(--gold)">Xem từ đã lưu →</button>
+      </div>
+    </div>
+
+    <div style="background:white;border:1px solid var(--border);border-radius:20px;padding:24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <div style="width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--red)">
+        ${TEACHER_INFO.avatarUrl ? `<img src="${TEACHER_INFO.avatarUrl}" style="width:100%;height:100%;object-fit:cover">` : '<div style="width:100%;height:100%;background:var(--red);color:white;display:flex;align-items:center;justify-content:center;font-weight:700">M</div>'}
+      </div>
+      <div style="flex:1;min-width:220px">
+        <div style="font-size:12px;font-weight:700;color:var(--red)">GIÁO VIÊN HƯỚNG DẪN</div>
+        <div style="font-size:18px;font-weight:700;color:var(--ink)">${TEACHER_INFO.name}</div>
+        <div style="font-size:13px;color:var(--ink-light)">${TEACHER_INFO.title}</div>
+      </div>
+      <button class="btn-primary-sm" data-nav="teacher">Xem hồ sơ GV →</button>
+    </div>
+    `}
+  </div>`;
 }
 
 function renderSearchResults() {
@@ -11895,7 +11874,7 @@ function renderSearchResults() {
   </div>`;
 }
 
-// MỤC HSK 3.0 (GOM TẤT CẢ VÀO MỘT TRANG)
+// MỤC HSK 3.0 (CHỨA ĐẦY ĐỦ BÀI HỌC)
 function renderHSK30View() {
   const reviewCard = (num, words, act, cls = '') => 
     `<div class="lesson-card review-card ${cls}" data-action="${act}">
@@ -11904,33 +11883,23 @@ function renderHSK30View() {
       <div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div>
     </div>`;
 
-  const grammarCard = (num, color, glv, count) => 
-    `<div class="lesson-card" style="border:2px dashed ${color};background:linear-gradient(135deg,#FFF8F0,#FFF0E8);cursor:pointer" data-action="open-grammar" data-glv="${glv}">
-      <div class="lesson-num" style="color:${color}">📖 Ngữ pháp HSK ${num}</div>
-      <div class="lesson-title-cn" style="font-size:18px">${count} điểm ngữ pháp</div>
-      <div class="lesson-title-vi">Lý thuyết + Ví dụ theo bài</div>
-    </div>`;
-
   let cards1 = HSK1.map(l => `<div class="lesson-card" data-lesson="${l.id}" data-lv="hsk1"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
   let cards2 = HSK2.map(l => `<div class="lesson-card hsk2" data-lesson="${l.id}" data-lv="hsk2"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
 
   return `<div class="fade-in">
-    <!-- Nút chọn nhanh Cấp độ -->
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;scrollbar-width:none">
       ${['hsk1', 'hsk2', 'hsk3', 'hsk4', 'hsk5', 'hsk6', 'hsk79'].map(lv => `<button class="mode-tab ${state.level === lv ? 'active' : ''}" data-select-level="${lv}">${lv === 'hsk79' ? 'HSK 7-9' : lv.toUpperCase()}</button>`).join('')}
     </div>
 
     <div class="section-title"><span class="badge badge-hsk1">HSK 1</span> 新HSK教程 1 <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${getTotal(HSK1)} từ</span></div>
-    <div class="lesson-grid">${reviewCard(1, 300, 'open-review')}${grammarCard(1, '#2B7A78', 'hsk1', typeof GRAMMAR_HSK1 !== 'undefined' ? Object.values(GRAMMAR_HSK1).flat().length : 0)}${cards1}</div>
+    <div class="lesson-grid">${reviewCard(1, 300, 'open-review')}${cards1}</div>
 
     <div class="section-title"><span class="badge badge-hsk2">HSK 2</span> 新HSK教程 2 <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${getTotal(HSK2)} từ</span></div>
-    <div class="lesson-grid">${reviewCard(2, 200, 'open-review2', 'hsk2')}${grammarCard(2, '#DD6B20', 'hsk2', typeof GRAMMAR_HSK2 !== 'undefined' ? Object.values(GRAMMAR_HSK2).flat().length : 0)}${cards2}</div>
-
-    ${renderHomeHSK3()}${renderHomeHSK456()}${renderHomeHSK79()}
+    <div class="lesson-grid">${reviewCard(2, 200, 'open-review2', 'hsk2')}${cards2}</div>
   </div>`;
 }
 
-// TRANG GIỚI THIỆU GIÁO VIÊN
+// TRANG GIỚI THIỆU GIÁO VIÊN VỚI KHUNG AVATAR BẰNG ẢNH THẬT
 function renderTeacherView() {
   const t = TEACHER_INFO;
   const cardsHtml = t.highlights.map(item => `
@@ -11944,7 +11913,12 @@ function renderTeacherView() {
   return `<div class="fade-in">
     <div class="teacher-container">
       <div class="teacher-header">
-        <div class="teacher-avatar">${t.avatarText}</div>
+        <div class="teacher-avatar">
+          ${t.avatarUrl 
+            ? `<img src="${t.avatarUrl}" alt="${t.name}">` 
+            : t.avatarText || 'M'
+          }
+        </div>
         <div>
           <div class="teacher-name">${t.name}</div>
           <div class="teacher-title">${t.title}</div>
@@ -11967,7 +11941,6 @@ function renderTeacherView() {
   </div>`;
 }
 
-// TRANG TỪ VỰNG ĐÃ LƯU
 function renderMySavedView() {
   const favs = getFavorites();
   const allWords = getAllWords();
@@ -11981,7 +11954,6 @@ function renderMySavedView() {
   </div>`;
 }
 
-// TRANG KHÓA HỌC THỬ NGHIỆM
 function renderDevProductsView() {
   return `<div class="fade-in" style="max-width:700px;margin:20px auto;text-align:center">
     <div style="width:60px;height:60px;background:#E6F4F4;color:var(--red);font-size:28px;font-weight:700;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">建</div>
@@ -11996,109 +11968,7 @@ function renderDevProductsView() {
           <div style="font-size:12px;color:var(--ink-light)">Ôn thi học bổng Đại học Trung Quốc</div>
         </div>
       </div>
-
-      <div style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;gap:16px;align-items:center">
-        <div style="width:40px;height:40px;background:#E6F4F4;color:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700">教</div>
-        <div>
-          <div style="font-weight:700;font-size:15px">CTCSOL</div>
-          <div style="font-size:12px;color:var(--ink-light)">Chứng chỉ Giáo viên Tiếng Trung Quốc tế</div>
-        </div>
-      </div>
     </div>
-  </div>`;
-}
-
-function renderHomeHSK3() {
-  let rc3 = `<div class="lesson-card review-card hsk3" data-action="open-review3"><div class="lesson-num" style="color:var(--gold)">⭐ Tổng ôn từ vựng</div><div class="lesson-title-cn">500 từ HSK3</div><div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div></div>`;
-  let cards = HSK3.map(l => `<div class="lesson-card hsk3" data-lesson="${l.id}" data-lv="hsk3"><div class="lesson-num" style="color:#25855A">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag" style="background:#F0FDF4;color:#25855A">${l.words.length} từ</span></div></div>`).join('');
-  return `<div class="section-title"><span class="badge" style="background:#25855A">HSK 3</span> 新HSK教程 3 <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${getTotal(HSK3)} từ</span></div><div class="lesson-grid">${rc3}${cards}</div>`;
-}
-
-function renderHomeHSK456() {
-  let html = '';
-  ['hsk4', 'hsk5', 'hsk6'].forEach(lv => {
-    const d = getHSKSetData(lv);
-    let preview = `<div class="lesson-card" style="border:2px dashed ${d.color};background:linear-gradient(135deg,#FAFAFA,#F5F5F5);cursor:pointer" data-action="open-grammarAdv" data-glv="${lv}">
-      <div class="lesson-num" style="color:${d.color}">📖 Ngữ pháp HSK ${d.num}</div>
-      <div class="lesson-title-cn" style="font-size:16px">Phân loại nâng cao</div>
-      <div class="lesson-title-vi">Xem lý thuyết & ví dụ</div>
-    </div>`;
-
-    d.sets.slice(0, 4).forEach(s => {
-      preview += `<div class="lesson-card" style="border-left:3px solid ${d.color}" data-hskset="${s.id}" data-nav-lv="${lv}">
-        <div class="lesson-num" style="color:${d.color}">Mục ${s.id}</div>
-        <div class="lesson-title-cn" style="font-size:17px">Từ ${s.start} – ${s.end}</div>
-        <div class="lesson-title-vi" style="font-size:12px">${s.words.slice(0, 4).map(w => w.h).join(' · ')}…</div>
-        <div class="lesson-meta"><span class="lesson-tag" style="background:${d.bg};color:${d.color}">${s.words.length} từ</span></div>
-      </div>`;
-    });
-
-    preview += `<div class="lesson-card" style="border-left:3px solid ${d.color};display:flex;align-items:center;justify-content:center;border-style:dashed;cursor:pointer" data-select-level="${lv}">
-      <div style="text-align:center;color:${d.color};font-weight:600;font-size:14px">Xem tất cả ${d.sets.length} mục →</div>
-    </div>`;
-
-    html += `<div class="section-title"><span class="badge" style="background:${d.color}">HSK ${d.num}</span> Từ vựng HSK ${d.num} <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${d.all.length} từ</span></div><div class="lesson-grid">${preview}</div>`;
-  });
-  return html;
-}
-
-function renderHomeHSK79() {
-  const d = getHSKSetData('hsk79');
-  let preview = `<div class="lesson-card" style="border:2px dashed #8E44AD;background:linear-gradient(135deg,#FAF5FF,#F3EAFF);cursor:pointer" data-action="open-grammarAdv" data-glv="hsk79">
-    <div class="lesson-num" style="color:#8E44AD">📖 Ngữ pháp HSK 7-9</div>
-    <div class="lesson-title-cn" style="font-size:16px">${typeof GRAMMAR_HSK79G !== 'undefined' ? GRAMMAR_HSK79G.length : 0} điểm</div>
-    <div class="lesson-title-vi">Phân loại theo nhóm</div>
-  </div>`;
-  preview += d.sets.slice(0, 6).map(s => `<div class="lesson-card hsk79" data-hskset="${s.id}" data-nav-lv="hsk79">
-    <div class="lesson-num" style="color:#8E44AD">Mục ${s.id}</div>
-    <div class="lesson-title-cn" style="font-size:17px">Từ ${s.start} – ${s.end}</div>
-    <div class="lesson-title-vi" style="font-size:12px">${s.words.slice(0, 4).map(w => w.h).join(' · ')}…</div>
-    <div class="lesson-meta"><span class="lesson-tag" style="background:#F4ECF7;color:#8E44AD">${s.words.length} từ</span></div>
-  </div>`).join('');
-  preview += `<div class="lesson-card hsk79" style="display:flex;align-items:center;justify-content:center;border-style:dashed;cursor:pointer" data-select-level="hsk79"><div style="text-align:center;color:#8E44AD;font-weight:600;font-size:14px">Xem tất cả ${d.sets.length} mục →</div></div>`;
-  return `<div class="section-title"><span class="badge" style="background:#8E44AD">HSK 7-9</span> Từ vựng nâng cao <span style="font-size:13px;color:var(--ink-light);font-family:Be Vietnam Pro;font-weight:400">· ${d.all.length} từ</span></div><div class="lesson-grid">${preview}</div>`;
-}
-
-function renderLevel() {
-  const lessons = getLessons();
-  const lvNum = state.level.replace('hsk', '');
-  const colorCls = state.level === 'hsk2' ? ' hsk2' : state.level === 'hsk3' ? ' hsk3' : '';
-  const total = getTotal(lessons);
-  const reviewCard = `<div class="lesson-card review-card ${colorCls}" data-action="open-review"><div class="lesson-num" style="color:var(--gold)">⭐ Tổng ôn từ vựng</div><div class="lesson-title-cn">HSK ${lvNum}</div><div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div></div>`;
-  let cards = lessons.map(l => `<div class="lesson-card ${colorCls}" data-lesson="${l.id}" data-lv="${state.level}"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
-
-  return `<div class="fade-in">
-    <button class="back-btn" data-action="back">← Quay lại</button>
-    <div style="text-align:center;padding:10px 20px 24px">
-      <div class="section-title" style="justify-content:center;border:none;margin:0 0 8px"><span class="badge badge-${state.level}">HSK ${lvNum}</span> <span style="font-family:Noto Serif SC,serif">新HSK教程 ${lvNum}</span></div>
-      <p style="font-size:14px;color:var(--ink-light)">${total} từ vựng · ${lessons.length} bài học</p>
-    </div>
-    <div class="lesson-grid">${reviewCard}${cards}</div>
-  </div>`;
-}
-
-function renderReview() {
-  const allWords = getLevelWords(state.level);
-  if (!state.quizQuestions.length) {
-    if (state.rMode === 'meaning' || state.rMode === 'word') buildQuiz(allWords, allWords, state.rMode);
-    if (state.rMode === 'fillin') buildFillIn(allWords, allWords);
-  }
-
-  return `<div class="fade-in">
-    <button class="back-btn" data-action="back">← Quay lại</button>
-    <div class="lesson-view-title">⭐ Tổng ôn từ vựng ${state.level.toUpperCase()}</div>
-    <div class="lesson-view-sub">${allWords.length} từ · Có Hán Việt + Ví dụ câu</div>
-    <div class="mode-tabs">
-      <button class="mode-tab ${state.rMode === 'list' ? 'active' : ''}" data-rmode="list">📋 Danh sách</button>
-      <button class="mode-tab ${state.rMode === 'flashcard' ? 'active' : ''}" data-rmode="flashcard">🃏 Lật thẻ</button>
-      <button class="mode-tab ${state.rMode === 'meaning' ? 'active' : ''}" data-rmode="meaning">✏️ Chọn nghĩa</button>
-      <button class="mode-tab ${state.rMode === 'word' ? 'active' : ''}" data-rmode="word">🔄 Chọn từ</button>
-      <button class="mode-tab ${state.rMode === 'fillin' ? 'active' : ''}" data-rmode="fillin">📝 Điền từ</button>
-    </div>
-    ${state.rMode === 'list' ? renderWordListUI(allWords) : ''}
-    ${state.rMode === 'flashcard' ? renderFlashcardUI(allWords, 'fc-shuffle-review') : ''}
-    ${['meaning', 'word'].includes(state.rMode) ? renderQuizUI('quiz-restart-review') : ''}
-    ${state.rMode === 'fillin' ? renderFillInUI('quiz-restart-review') : ''}
   </div>`;
 }
 
@@ -12125,43 +11995,6 @@ function renderLesson() {
   </div>`;
 }
 
-function renderGrammar() {
-  const gData = state.level === 'hsk1' ? GRAMMAR_HSK1 : GRAMMAR_HSK1;
-  if (!gData) return '';
-
-  if (state.lessonId) {
-    const points = gData[state.lessonId] || [];
-    const items = points.map((p, i) => `<div class="word-item" style="grid-template-columns:auto 1fr">
-      <div style="min-width:36px;text-align:center;font-weight:700;color:var(--red);font-size:16px">${i + 1}</div>
-      <div class="word-info">
-        <div style="font-family:Noto Sans SC,sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:2px">${p.cn}</div>
-        <div style="font-size:14px;color:var(--red);font-weight:600;margin-bottom:4px">${p.vi}</div>
-        <div style="font-size:13px;color:var(--ink-light);margin-bottom:8px">${p.ex}</div>
-        <div style="background:#f8f5f0;border-radius:10px;padding:10px 14px;font-size:13px;color:#555;font-family:Noto Sans SC,sans-serif">${Array.isArray(p.eg) ? p.eg.join('<br>') : p.eg}</div>
-      </div>
-    </div>`).join('');
-
-    return `<div class="fade-in">
-      <button class="back-btn" data-action="back-grammar-lesson">← Quay lại</button>
-      <div class="lesson-view-title">📖 Ngữ pháp ${state.level.toUpperCase()} · Bài ${state.lessonId}</div>
-      <div class="word-list">${items}</div>
-    </div>`;
-  }
-
-  const lessons = Object.keys(gData).map(Number).sort((a, b) => a - b);
-  let cards = lessons.map(l => `<div class="lesson-card" style="border-left:3px solid var(--red);cursor:pointer" data-grammar-lesson="${l}">
-    <div class="lesson-num" style="color:var(--red)">Bài ${l}</div>
-    <div class="lesson-title-cn" style="font-size:16px">${gData[l].map(p => p.cn).join(' · ')}</div>
-    <div class="lesson-title-vi">${gData[l].length} điểm ngữ pháp</div>
-  </div>`).join('');
-
-  return `<div class="fade-in">
-    <button class="back-btn" data-action="back">← Quay lại</button>
-    <div class="lesson-view-title">📖 Ngữ pháp ${state.level.toUpperCase()}</div>
-    <div class="lesson-grid">${cards}</div>
-  </div>`;
-}
-
 // ROUTER MAP
 const viewRoutes = {
   home: renderHome,
@@ -12169,10 +12002,7 @@ const viewRoutes = {
   teacher: renderTeacherView,
   mySaved: renderMySavedView,
   devProducts: renderDevProductsView,
-  level: renderLevel,
-  review: renderReview,
-  lesson: renderLesson,
-  grammar: renderGrammar
+  lesson: renderLesson
 };
 
 function render() {
@@ -12235,15 +12065,6 @@ function initEvents() {
       return;
     }
 
-    // Select HSK Level
-    const selectLv = t.closest('[data-select-level]');
-    if (selectLv) {
-      state.level = selectLv.dataset.selectLevel;
-      state.view = 'level';
-      render(); window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
     // Lessons Click
     const lessonCard = t.closest('[data-lesson]');
     if (lessonCard) {
@@ -12251,13 +12072,6 @@ function initEvents() {
       state.view = 'lesson';
       state.lessonId = parseInt(lessonCard.dataset.lesson);
       state.mode = 'list'; state.fcShuffled = []; state.quizQuestions = [];
-      render(); window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    const grammarLessonCard = t.closest('[data-grammar-lesson]');
-    if (grammarLessonCard) {
-      state.lessonId = parseInt(grammarLessonCard.dataset.grammarLesson);
       render(); window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -12270,19 +12084,11 @@ function initEvents() {
       render(); return;
     }
 
-    const rmodeBtn = t.closest('[data-rmode]');
-    if (rmodeBtn) {
-      state.rMode = rmodeBtn.dataset.rmode;
-      state.fcShuffled = []; state.quizQuestions = [];
-      render(); return;
-    }
-
     // Actions
     const actionBtn = t.closest('[data-action]');
     if (actionBtn) {
       const act = actionBtn.dataset.action;
-      if (act === 'back') { state.view = state.lessonId ? 'level' : 'home'; state.lessonId = null; render(); }
-      if (act === 'back-grammar-lesson') { state.lessonId = null; render(); }
+      if (act === 'back') { state.view = 'home'; state.lessonId = null; render(); }
       if (act === 'flip') {
         state.fcFlipped = !state.fcFlipped;
         const inner = app.querySelector('.flashcard-inner');
@@ -12292,17 +12098,6 @@ function initEvents() {
       if (act === 'fc-next') { state.fcIndex++; state.fcFlipped = false; render(); }
       if (act.startsWith('fc-shuffle')) {
         state.fcShuffled = shuffle(state.fcShuffled); state.fcIndex = 0; state.fcFlipped = false; render();
-      }
-      if (act.startsWith('open-review')) {
-        if (act === 'open-review2') state.level = 'hsk2';
-        else if (act === 'open-review3') state.level = 'hsk3';
-        else if (act === 'open-review') state.level = 'hsk1';
-        state.view = 'review'; state.rMode = 'list'; state.fcShuffled = []; state.quizQuestions = [];
-        render(); window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      if (act === 'open-grammar') {
-        state.view = 'grammar'; state.level = actionBtn.dataset.glv; state.lessonId = null;
-        render(); window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       if (act.startsWith('quiz-restart')) {
         state.quizQuestions = []; render();
