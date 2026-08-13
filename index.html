@@ -201,8 +201,32 @@ body {
 }
 .stroke-play:hover {background: var(--red); color: white;}
 
-.back-btn {display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink-light); background: none; border: none; cursor: pointer; margin-bottom: 14px;}
-.back-btn:hover {color: var(--red);}
+/* Nút Quay lại thiết kế mới hiện đại, sang trọng */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+.back-btn:hover {
+  background: var(--cream);
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateX(-3px);
+  box-shadow: var(--shadow);
+}
+
 .lesson-view-title {font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: var(--ink);}
 .lesson-view-sub {font-size: 14px; color: var(--ink-light); margin-top: 6px; margin-bottom: 20px;}
 
@@ -11570,16 +11594,22 @@ const GRAMMAR_HSK79G = [
 // 📌 1. CHỈNH SỬA THÔNG TIN GIÁO VIÊN & LINK ẢNH ĐẠI DIỆN TẠI ĐÂY
 // =========================================================================
 const TEACHER_INFO = {
-  name: "Nguyễn Đình Minh",
+  name: "Đình Minh Nguyễn",
   title: "Giáo viên Tiếng Trung · HSK 6 & HSKK Cao Cấp",
   avatarUrl: "avatar.jpg", 
   avatarText: "明",
   location: "Nha Trang & Đào tạo Online Toàn Quốc",
   zalo: "0332364199",
+  
+  // Link mạng xã hội đã được cập nhật:
+  facebookUrl: "https://www.facebook.com/minh.nguyendinh.1605/",
+  fanpageUrl: "https://www.facebook.com/HSKnhatrang/",
+  //groupUrl: "#", // Thay link Group học tập vào đây nếu có
+  
   bio: "Chuyên nghiên cứu, biên soạn tài liệu và đào tạo luyện thi HSK 3.0 từ cấp độ căn bản đến nâng cao. Cung cấp hệ thống học từ vựng, ngữ pháp và công cụ tra cứu chữ Hán trực quan.",
   
   highlights: [
-    { title: "Bằng cấp & Chứng chỉ", main: "HSK 6 & HSKK Cao Cấp", sub: "Trình độ ngôn ngữ chuẩn quốc tế" },
+    { title: "Chuyên môn", main: "HSK 6 & HSKK Cao Cấp", sub: "Phản xạ giao tiếp và luyện thi chuyên sâu" },
     { title: "Tài liệu", main: "Giáo trình HSK 3.0 chuẩn hóa", sub: "Hệ thống hóa từ vựng, ngữ pháp, Hán Việt" },
     { title: "Phương pháp", main: "Flashcard & Trắc nghiệm", sub: "Ghi nhớ thông minh qua hệ thống tương tác" },
     { title: "Hỗ trợ học tập", main: "Online & Offline", sub: "Giải đáp thắc mắc và đồng hành sát sao" }
@@ -11739,12 +11769,19 @@ function renderWordListUI(words) {
     const pos = w.pos || w.ps || '';
     const hv = w.hv ? `<span style="color:var(--gold);font-size:12px;margin-left:6px">${w.hv}</span>` : '';
     
-    // ĐIỀU CHỈNH: Đưa từ loại lên trước ví dụ và thêm tiền tố "Ví dụ:"
+    // ĐIỀU CHỈNH: Thêm nút 🔊 phát âm vào sau chữ "Ví dụ:"
     let exHtml = '';
     if (w.ex) {
-      exHtml = `<div style="font-size:15px;color:#333;font-weight:500;margin-top:8px;line-height:1.6">
-                  <span style="color:var(--red);font-weight:700;font-size:13px;margin-right:4px">Ví dụ:</span>
-                  <span>${w.ex}</span>
+      // Tách chữ Hán ra để phát âm cả câu
+      const match = w.ex.match(/^([^(（]+)/);
+      const exCn = match ? match[1].trim() : w.ex;
+      
+      exHtml = `<div style="font-size:15px;color:#333;font-weight:500;margin-top:8px;line-height:1.6;display:flex;align-items:flex-start;gap:6px">
+                  <span style="color:var(--red);font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px">Ví dụ:</span>
+                  <div style="flex:1">
+                    <span>${w.ex}</span>
+                    <button class="ex-speak-btn" data-speak="${exCn}" title="Phát âm câu ví dụ">🔊</button>
+                  </div>
                 </div>`;
     }
 
@@ -11760,8 +11797,9 @@ function renderWordListUI(words) {
         <div class="word-pinyin">${pinyin} ${hv}</div>
         <div class="word-meaning">${meaning}</div>
         
-        <!-- Đặt Từ loại (POS) lên trên Ví dụ -->
+        <!-- Từ loại (POS) lên trên -->
         ${pos ? `<div class="word-pos" style="margin-top:6px">${pos}</div>` : ''}
+        <!-- Ví dụ kèm nút phát âm -->
         ${exHtml}
       </div>
       <button class="fav-btn ${isFav ? 'active' : ''}" data-fav="${hanzi}">${isFav ? '★' : '☆'}</button>
@@ -11868,9 +11906,9 @@ function renderNav() {
     <div class="nav-inner">
       <button class="nav-btn ${state.view === 'home' ? 'active' : ''}" data-nav="home">Trang chủ</button>
       <button class="nav-btn ${['hsk30', 'level', 'lesson', 'setDetail'].includes(state.view) ? 'active' : ''}" data-nav="hsk30">HSK 3.0</button>
-      <button class="nav-btn ${state.view === 'teacher' ? 'active' : ''}" data-nav="teacher">Giới thiệu GV</button>
       <button class="nav-btn ${state.view === 'mySaved' ? 'active' : ''}" data-nav="mySaved">⭐ Từ vựng đã lưu (${getFavorites().length})</button>
-      <button class="nav-btn ${state.view === 'devProducts' ? 'active' : ''}" data-nav="devProducts">Thử nghiệm</button>
+      <button class="nav-btn ${state.view === 'devProducts' ? 'active' : ''}" data-nav="devProducts">Đang phát triển</button>
+      <button class="nav-btn ${state.view === 'teacher' ? 'active' : ''}" data-nav="teacher">Thông tin Giáo viên</button>
     </div>
   </div>`;
 }
@@ -12026,7 +12064,8 @@ function renderTeacherView() {
   `).join('');
 
   return `<div class="fade-in">
-    <div class="teacher-container">
+    <button class="back-btn" data-action="back">← Quay lại</button>
+    <div class="teacher-container" style="margin-top:10px">
       <div class="teacher-header">
         <div class="teacher-avatar">
           ${t.avatarUrl 
@@ -12045,12 +12084,16 @@ function renderTeacherView() {
         ${t.bio}
       </div>
 
-      <div class="info-grid">
-        ${cardsHtml}
+      <!-- CÁC NÚT KẾT NỐI MẠNG XÃ HỘI -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px">
+        <a href="${t.facebookUrl}" target="_blank" style="padding:12px;background:#1877F2;color:white;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">👤 Facebook cá nhân</a>
+        <a href="https://zalo.me/${t.zalo}" target="_blank" style="padding:12px;background:#0068FF;color:white;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">💬 Zalo ${t.zalo}</a>
+        <a href="${t.fanpageUrl}" target="_blank" style="padding:12px;background:#2B7A78;color:white;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px">📘 Fanpage chính thức</a>
+   
       </div>
 
-      <div style="margin-top:32px;text-align:center">
-        <a href="https://zalo.me/${t.zalo}" target="_blank" style="display:inline-block;padding:12px 32px;background:#0068FF;color:white;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px">💬 Liên hệ Zalo: ${t.zalo}</a>
+      <div class="info-grid">
+        ${cardsHtml}
       </div>
     </div>
   </div>`;
@@ -12159,9 +12202,9 @@ function renderReview() {
 const viewRoutes = {
   home: renderHome,
   hsk30: renderHSK30View,
-  teacher: renderTeacherView,
+  teacher: renderTeacherView,       // Thông tin Giáo viên
   mySaved: renderMySavedView,
-  devProducts: renderDevProductsView,
+  devProducts: renderDevProductsView, // Đang phát triển
   level: renderLevel,
   lesson: renderLesson,
   setDetail: renderSetDetail,
