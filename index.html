@@ -12008,7 +12008,7 @@ function renderSearchResults() {
 }
 
 const grammarCard = (gData, level, color) => {
-  const hasData = gData && Object.keys(gData).length > 0;
+  const hasData = typeof gData !== 'undefined' && gData && Object.keys(gData).length > 0;
   const count = hasData ? Object.keys(gData).length : 0;
   
   return `
@@ -12021,7 +12021,7 @@ const grammarCard = (gData, level, color) => {
 
 function renderHSK30View() {
   const renderSection = (level, hskData, gramData, color, totalWords) => {
-    let cards = typeof hskData !== 'undefined' ? hskData.map(l => 
+    let cards = typeof hskData !== 'undefined' && Array.isArray(hskData) ? hskData.map(l => 
       `<div class="lesson-card ${level}" data-lesson="${l.id}" data-lv="${level}">
          <div class="lesson-num">第${l.id}课 · Bài ${l.id}</div>
          <div class="lesson-title-cn">${l.title}</div>
@@ -12048,8 +12048,6 @@ function renderHSK30View() {
         ${cards}
       </div>`;
   };
-  
-  
 
   return `<div class="fade-in">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;scrollbar-width:none">
@@ -12275,16 +12273,13 @@ function renderReview() {
 
 // ROUTER MAP
 const viewRoutes = {
-  home: renderHome,
-  hsk30: renderHSK30View,
-  teacher: renderTeacherView,       // Thông tin Giáo viên
-  mySaved: renderMySavedView,
-  devProducts: renderDevProductsView, // Đang phát triển
-  level: renderLevel,
-  lesson: renderLesson,
-  setDetail: renderSetDetail,
-  review: renderReview
-  grammar-detail: renderGrammarDetail, // 👈 Thêm dòng này vào đây
+  'home': renderHome,
+  'hsk30': renderHSK30View,
+  'review': renderReviewView,
+  'grammar-detail': renderGrammarDetail, // 👈 Bắt buộc phải có dòng này
+  'teacher': renderTeacherView,
+  'tools': renderToolsView,
+  'saved': renderSavedView
 };
 
 function render() {
