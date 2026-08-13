@@ -84,7 +84,7 @@ body {
   background: var(--red); color: white; box-shadow: 0 2px 10px rgba(43, 122, 120, 0.25);
 }
 
-/* Layout Content Main */
+/* Layout Main */
 .main {max-width: 1080px; margin: 0 auto; padding: 24px 16px 100px;}
 
 .search-input {
@@ -133,7 +133,7 @@ body {
 }
 
 /* =========================================================
-   THẺ TỪ VỰNG (WORD ITEM) & MÔ PHỎNG NÉT VẼ
+   THẺ TỪ VỰNG & NÉT VẼ HANZIWRITER
    ========================================================= */
 .word-list {display: flex; flex-direction: column; gap: 10px;}
 .word-item {
@@ -154,7 +154,7 @@ body {
 .word-pinyin {font-size: 14px; color: var(--red); font-weight: 600; margin-bottom: 2px;}
 .word-meaning {font-size: 13px; color: var(--ink-light); line-height: 1.4;}
 
-/* Nút Loa Âm thanh chuẩn */
+/* Nút Loa Âm thanh */
 .audio-btn {
   background: #E6F4F4; border: none; cursor: pointer;
   font-size: 16px; padding: 6px 10px; border-radius: 8px;
@@ -176,7 +176,14 @@ body {
   margin-top: 6px; width: fit-content;
 }
 
-/* Khung nét vẽ HanziWriter chuẩn Flexbox */
+/* Nút phát âm riêng cho câu ví dụ */
+.ex-speak-btn {
+  background: none; border: none; cursor: pointer; font-size: 14px;
+  margin-left: 6px; opacity: 0.6; transition: all 0.2s;
+}
+.ex-speak-btn:hover { opacity: 1; transform: scale(1.15); }
+
+/* Khung nét vẽ HanziWriter & Ẩn chữ nhỏ bên dưới */
 .word-strokes {
   width: 100%; flex-basis: 100%;
   padding-top: 14px; border-top: 1px dashed var(--border); margin-top: 12px;
@@ -184,7 +191,9 @@ body {
 }
 .stroke-char {display: flex; flex-direction: column; align-items: center; gap: 4px;}
 .stroke-char svg {border: 1px solid var(--border); border-radius: 10px; background: white;}
-.stroke-char span {font-size: 11px; color: var(--ink-light);}
+/* 👉 Ẩn chữ Hán mẫu nhỏ rơi bên dưới nét vẽ (Ảnh 2) */
+.stroke-char > span { display: none !important; }
+
 .stroke-play {
   padding: 6px 14px; border: 1px solid var(--border); border-radius: 8px;
   font-family: inherit; font-size: 12px; cursor: pointer; background: white;
@@ -201,7 +210,7 @@ body {
 .mode-tab {padding: 10px 22px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; background: white; color: var(--ink-light);}
 .mode-tab.active {border-color: var(--red); background: var(--red); color: white;}
 
-/* Flashcard & Quiz */
+/* Flashcard & Nút Xáo Trộn chuẩn */
 .flashcard-container {display: flex; flex-direction: column; align-items: center; padding: 16px 0;}
 .flashcard {width: 100%; max-width: 440px; min-height: 300px; perspective: 1000px; cursor: pointer; margin-bottom: 22px;}
 .flashcard-inner {position: relative; width: 100%; height: 100%; min-height: 300px; transition: transform 0.6s; transform-style: preserve-3d;}
@@ -220,7 +229,24 @@ body {
 .fc-btn.prev {background: white; color: var(--ink); border: 1.5px solid var(--border);}
 .fc-btn.next {background: var(--red); color: white;}
 
+/* 👉 Sửa Nút Xáo Trộn (Ảnh 1) */
+.shuffle-btn {
+  padding: 10px 20px; background: white; border: 1.5px solid var(--border);
+  border-radius: 12px; font-family: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer; color: var(--ink-light); transition: all 0.2s;
+}
+.shuffle-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* 👉 Sửa Trắc nghiệm & Thanh tiến độ (Ảnh 3, 4) */
 .quiz-container {max-width: 560px; margin: 0 auto; padding: 16px 0;}
+.quiz-progress-bar {
+  width: 100%; height: 6px; background: var(--border);
+  border-radius: 3px; margin-bottom: 22px; overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--red), var(--gold));
+  border-radius: 3px; transition: width 0.4s ease;
+}
 .quiz-question {text-align: center; margin-bottom: 24px;}
 .quiz-q-label {font-size: 13px; color: var(--ink-light); margin-bottom: 8px;}
 .quiz-q-hanzi {font-family: 'Noto Serif SC', serif; font-size: 40px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3;}
@@ -231,7 +257,15 @@ body {
 .quiz-option.correct {border-color: var(--green); background: #F0FDF4; color: var(--green); font-weight: 600;}
 .quiz-option.wrong {border-color: #E53E3E; background: #FFF5F5; color: #C53030;}
 
-/* TRANG GIỚI THIỆU GIÁO VIÊN VỚI AVATAR ẢNH THẬT */
+/* 👉 Nút Làm lại test chuẩn (Ảnh 4) */
+.quiz-restart {
+  padding: 12px 32px; background: var(--red); color: white;
+  border: none; border-radius: 12px; font-family: inherit;
+  font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s;
+}
+.quiz-restart:hover { background: var(--red-dark); }
+
+/* Trang Giáo Viên */
 .teacher-container {
   background: var(--paper); border: 1px solid var(--border);
   border-radius: 20px; padding: 32px; box-shadow: var(--shadow-lg);
@@ -249,9 +283,7 @@ body {
   box-shadow: var(--shadow-md); flex-shrink: 0;
   overflow: hidden; border: 3px solid white;
 }
-.teacher-avatar img {
-  width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-}
+.teacher-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .teacher-name {font-size: 24px; font-weight: 700; color: var(--ink);}
 .teacher-title {font-size: 14px; color: var(--red); font-weight: 600; margin-top: 2px;}
 
@@ -275,29 +307,7 @@ body {
 <body>
 <div id="app"></div>
 <script>
-// =========================================================================
-// 📌 1. CHỈNH SỬA THÔNG TIN GIÁO VIÊN DỄ DÀNG TẠI ĐÂY
-// =========================================================================
-const TEACHER_INFO = {
-  name: "Đình Minh Nguyễn",
-  title: "Giáo viên & Chuyên gia Phát triển Tài liệu Tiếng Trung · HSK 6 & HSKK Cao Cấp",
-  
-  // Đường dẫn ảnh đại diện (Thay bằng tên file ảnh của bạn trong thư mục, ví dụ: "avatar.jpg" hoặc để trống nếu dùng chữ cái)
-  avatarUrl: "avatar.jpg", 
-  avatarText: "明",
-  
-  location: "Nha Trang & Đào tạo Online Toàn Quốc",
-  zalo: "0332364199",
-  
-  bio: "Chuyên nghiên cứu, biên soạn tài liệu và đào tạo luyện thi HSK 3.0 từ cấp độ căn bản đến nâng cao. Cung cấp hệ thống học từ vựng, ngữ pháp và công cụ tra cứu chữ Hán trực quan.",
-  
-  highlights: [
-    { title: "Chuyên môn", main: "HSK 6 & HSKK Cao Cấp", sub: "Phản xạ giao tiếp và luyện thi chuyên sâu" },
-    { title: "Tài liệu", main: "Giáo trình HSK 3.0 chuẩn hóa", sub: "Hệ thống hóa từ vựng, ngữ pháp, Hán Việt" },
-    { title: "Phương pháp", main: "Flashcard & Trắc nghiệm", sub: "Ghi nhớ thông minh qua hệ thống tương tác" },
-    { title: "Hỗ trợ học tập", main: "Online & Offline", sub: "Giải đáp thắc mắc và đồng hành sát sao" }
-  ]
-};
+
 
 const HSK1 = [
 {id:1,title:"AI小语，你好！",titleVi:"AI Xiaoyu, xin chào!",words:[{hanzi:"你好",pinyin:"nǐ hǎo",vi:"xin chào",en:"hello",pos:""},{hanzi:"老师",pinyin:"lǎoshī",vi:"giáo viên, thầy/cô",en:"teacher",pos:"n."},{hanzi:"好",pinyin:"hǎo",vi:"tốt, khỏe",en:"good",pos:"adj."},{hanzi:"大家",pinyin:"dàjiā",vi:"mọi người",en:"everyone",pos:"pron."},{hanzi:"们",pinyin:"men",vi:"(hậu tố số nhiều)",en:"(plural suffix)",pos:"suf."},{hanzi:"同学",pinyin:"tóngxué",vi:"bạn cùng lớp",en:"classmate",pos:"n."},{hanzi:"你们",pinyin:"nǐmen",vi:"các bạn",en:"you (plural)",pos:"pron."},{hanzi:"学生",pinyin:"xuéshēng",vi:"học sinh, sinh viên",en:"student",pos:"n."},{hanzi:"您",pinyin:"nín",vi:"ngài (tôn kính)",en:"you (formal)",pos:"pron."},{hanzi:"谢谢",pinyin:"xièxie",vi:"cảm ơn",en:"thank you",pos:"v."},{hanzi:"不客气",pinyin:"bú kèqi",vi:"không có gì",en:"you're welcome",pos:""},{hanzi:"再见",pinyin:"zàijiàn",vi:"tạm biệt",en:"goodbye",pos:"v."}]},
@@ -11557,9 +11567,28 @@ const GRAMMAR_HSK79G = [
 
 
 // =========================================================================
-// TRẠNG THÁI ỨNG DỤNG (APP STATE)
+// 📌 1. CHỈNH SỬA THÔNG TIN GIÁO VIÊN & LINK ẢNH ĐẠI DIỆN TẠI ĐÂY
 // =========================================================================
+const TEACHER_INFO = {
+  name: "Nguyễn Đình Minh",
+  title: "Giáo viên Tiếng Trung · HSK 6 & HSKK Cao Cấp",
+  avatarUrl: "avatar.jpg", 
+  avatarText: "明",
+  location: "Nha Trang & Đào tạo Online Toàn Quốc",
+  zalo: "0332364199",
+  bio: "Chuyên nghiên cứu, biên soạn tài liệu và đào tạo luyện thi HSK 3.0 từ cấp độ căn bản đến nâng cao. Cung cấp hệ thống học từ vựng, ngữ pháp và công cụ tra cứu chữ Hán trực quan.",
+  
+  highlights: [
+    { title: "Bằng cấp & Chứng chỉ", main: "HSK 6 & HSKK Cao Cấp", sub: "Trình độ ngôn ngữ chuẩn quốc tế" },
+    { title: "Tài liệu", main: "Giáo trình HSK 3.0 chuẩn hóa", sub: "Hệ thống hóa từ vựng, ngữ pháp, Hán Việt" },
+    { title: "Phương pháp", main: "Flashcard & Trắc nghiệm", sub: "Ghi nhớ thông minh qua hệ thống tương tác" },
+    { title: "Hỗ trợ học tập", main: "Online & Offline", sub: "Giải đáp thắc mắc và đồng hành sát sao" }
+  ]
+};
 
+// =========================================================================
+// 2. STATE LOGIC
+// =========================================================================
 let state = {
   view: 'home',
   level: 'hsk1',
@@ -11614,35 +11643,69 @@ function shuffle(a) {
   const b = [...a];
   for (let i = b.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [b[i], b[j]] = [b[i], b[j]];
+    [b[i], b[j]] = [b[j], b[i]];
   }
   return b;
 }
 
 function getTotal(arr) {
-  return (arr || []).reduce((s, l) => s + l.words.length, 0);
+  return (arr || []).reduce((s, l) => s + (l.words ? l.words.length : 0), 0);
 }
 
 function getLessons() {
-  return state.level === 'hsk1' ? HSK1 : state.level === 'hsk2' ? HSK2 : HSK3;
+  if (state.level === 'hsk1') return typeof HSK1 !== 'undefined' ? HSK1 : [];
+  if (state.level === 'hsk2') return typeof HSK2 !== 'undefined' ? HSK2 : [];
+  if (state.level === 'hsk3') return typeof HSK3 !== 'undefined' ? HSK3 : [];
+  return [];
 }
 
 function getAllWords() {
-  const hsk1Words = typeof HSK1_ALL !== 'undefined' ? HSK1_ALL : HSK1.flatMap(l => l.words);
-  const hsk2Words = typeof HSK2_ALL !== 'undefined' ? HSK2_ALL : HSK2.flatMap(l => l.words);
-  const hsk3Words = typeof HSK3_ALL !== 'undefined' ? HSK3_ALL : HSK3.flatMap(l => l.words);
-  return [...hsk1Words, ...hsk2Words, ...hsk3Words];
+  const hsk1Words = typeof HSK1_ALL !== 'undefined' ? HSK1_ALL : (typeof HSK1 !== 'undefined' ? HSK1.flatMap(l => l.words) : []);
+  const hsk2Words = typeof HSK2_ALL !== 'undefined' ? HSK2_ALL : (typeof HSK2 !== 'undefined' ? HSK2.flatMap(l => l.words) : []);
+  const hsk3Words = typeof HSK3_ALL !== 'undefined' ? HSK3_ALL : (typeof HSK3 !== 'undefined' ? HSK3.flatMap(l => l.words) : []);
+  const hsk4Words = typeof HSK4_ALL !== 'undefined' ? HSK4_ALL : [];
+  const hsk5Words = typeof HSK5_ALL !== 'undefined' ? HSK5_ALL : [];
+  const hsk6Words = typeof HSK6_ALL !== 'undefined' ? HSK6_ALL : [];
+  const hsk79Words = typeof HSK79_ALL !== 'undefined' ? HSK79_ALL : [];
+
+  return [...hsk1Words, ...hsk2Words, ...hsk3Words, ...hsk4Words, ...hsk5Words, ...hsk6Words, ...hsk79Words];
 }
 
 function getLevelWords(level = state.level) {
   if (level === 'hsk1') return typeof HSK1_ALL !== 'undefined' ? HSK1_ALL : HSK1.flatMap(l => l.words);
   if (level === 'hsk2') return typeof HSK2_ALL !== 'undefined' ? HSK2_ALL : HSK2.flatMap(l => l.words);
   if (level === 'hsk3') return typeof HSK3_ALL !== 'undefined' ? HSK3_ALL : HSK3.flatMap(l => l.words);
+  if (level === 'hsk4') return typeof HSK4_ALL !== 'undefined' ? HSK4_ALL : [];
+  if (level === 'hsk5') return typeof HSK5_ALL !== 'undefined' ? HSK5_ALL : [];
+  if (level === 'hsk6') return typeof HSK6_ALL !== 'undefined' ? HSK6_ALL : [];
+  if (level === 'hsk79') return typeof HSK79_ALL !== 'undefined' ? HSK79_ALL : [];
   return [];
 }
 
+function getHSKSetData(level = state.level) {
+  const all = getLevelWords(level);
+  const configs = {
+    hsk4: { num: '4', color: '#2980B9', bg: '#EBF5FB' },
+    hsk5: { num: '5', color: '#1ABC9C', bg: '#E8F6F3' },
+    hsk6: { num: '6', color: '#F39C12', bg: '#FEF5E7' },
+    hsk79: { num: '7-9', color: '#8E44AD', bg: '#F4ECF7' }
+  };
+  const cfg = configs[level] || configs.hsk4;
+  const sets = [];
+  const sz = 20;
+  for (let i = 0; i < all.length; i += sz) {
+    sets.push({
+      id: Math.floor(i / sz) + 1,
+      words: all.slice(i, i + sz),
+      start: i + 1,
+      end: Math.min(i + sz, all.length)
+    });
+  }
+  return { ...cfg, all, sets };
+}
+
 // =========================================================================
-// 4. QUIZ & FILL-IN BUILDERS
+// 4. QUIZ BUILDER
 // =========================================================================
 function buildQuiz(sourceWords, poolWords, type = 'meaning', count = 30) {
   const words = shuffle(sourceWords).slice(0, count);
@@ -11675,7 +11738,18 @@ function renderWordListUI(words) {
     const pinyin = w.pinyin || w.p;
     const pos = w.pos || w.ps || '';
     const hv = w.hv ? `<span style="color:var(--gold);font-size:12px;margin-left:6px">${w.hv}</span>` : '';
-    const ex = w.ex ? `<div style="font-size:12px;color:#999;margin-top:3px;line-height:1.4">${w.ex}</div>` : '';
+    
+    let exCn = '';
+    let exHtml = '';
+    if (w.ex) {
+      const match = w.ex.match(/^([^(（]+)/);
+      exCn = match ? match[1].trim() : w.ex;
+      exHtml = `<div style="font-size:12px;color:#888;margin-top:4px;line-height:1.5;display:flex;align-items:center;gap:4px">
+        <span>${w.ex}</span>
+        <button class="ex-speak-btn" data-speak="${exCn}" title="Phát âm câu ví dụ">🔊</button>
+      </div>`;
+    }
+
     const meaning = w.en ? `${w.vi} · ${w.en}` : w.vi;
     const isFav = favs.includes(hanzi);
 
@@ -11687,7 +11761,7 @@ function renderWordListUI(words) {
       <div class="word-info">
         <div class="word-pinyin">${pinyin} ${hv}</div>
         <div class="word-meaning">${meaning}</div>
-        ${ex}
+        ${exHtml}
         ${pos ? `<div class="word-pos">${pos}</div>` : ''}
       </div>
       <button class="fav-btn ${isFav ? 'active' : ''}" data-fav="${hanzi}">${isFav ? '★' : '☆'}</button>
@@ -11738,14 +11812,16 @@ function renderQuizUI(restartAction = 'quiz-restart') {
   if (state.quizDone) {
     const t = state.quizQuestions.length;
     const p = Math.round((state.quizScore / t) * 100);
-    return `<div class="quiz-result fade-in">
-      <div class="quiz-score">${state.quizScore}/${t}</div>
-      <div class="quiz-score-label">Đúng ${p}%</div>
-      <button class="quiz-restart" data-action="${restartAction}">Làm lại</button>
+    const m = p >= 90 ? '🎉 Xuất sắc!' : p >= 70 ? '👍 Khá tốt!' : p >= 50 ? '💪 Cần ôn thêm!' : '📚 Hãy ôn lại nhé!';
+    return `<div class="quiz-result fade-in" style="text-align:center;padding:32px 20px">
+      <div style="font-size:48px;font-weight:700;color:var(--red);margin-bottom:8px">${state.quizScore}/${t}</div>
+      <div style="font-size:16px;color:var(--ink-light);margin-bottom:24px">${m} Đúng ${p}%</div>
+      <button class="quiz-restart" data-action="${restartAction}">Làm lại bài test</button>
     </div>`;
   }
   const q = state.quizQuestions[state.quizIndex];
   if (!q) return '';
+  const pr = ((state.quizIndex + 1) / state.quizQuestions.length) * 100;
   
   const optHtml = q.options.map((o, i) => {
     let c = '';
@@ -11757,6 +11833,7 @@ function renderQuizUI(restartAction = 'quiz-restart') {
   }).join('');
 
   return `<div class="quiz-container fade-in">
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${pr}%"></div></div>
     <div class="quiz-question">
       <div class="quiz-q-label">Câu ${state.quizIndex + 1}/${state.quizQuestions.length}</div>
       <div class="quiz-q-hanzi">${q.prompt}</div>
@@ -11767,7 +11844,7 @@ function renderQuizUI(restartAction = 'quiz-restart') {
 }
 
 // =========================================================================
-// 6. HEADER & NAVIGATION MENU
+// 6. HEADER & NAV
 // =========================================================================
 function renderHeader() {
   const streak = updateStreak();
@@ -11789,7 +11866,7 @@ function renderNav() {
   return `<div class="nav">
     <div class="nav-inner">
       <button class="nav-btn ${state.view === 'home' ? 'active' : ''}" data-nav="home">Trang chủ</button>
-      <button class="nav-btn ${['hsk30', 'level', 'lesson'].includes(state.view) ? 'active' : ''}" data-nav="hsk30">HSK 3.0</button>
+      <button class="nav-btn ${['hsk30', 'level', 'lesson', 'setDetail'].includes(state.view) ? 'active' : ''}" data-nav="hsk30">HSK 3.0</button>
       <button class="nav-btn ${state.view === 'teacher' ? 'active' : ''}" data-nav="teacher">Giới thiệu GV</button>
       <button class="nav-btn ${state.view === 'mySaved' ? 'active' : ''}" data-nav="mySaved">⭐ Từ vựng đã lưu (${getFavorites().length})</button>
       <button class="nav-btn ${state.view === 'devProducts' ? 'active' : ''}" data-nav="devProducts">Thử nghiệm</button>
@@ -11798,10 +11875,8 @@ function renderNav() {
 }
 
 // =========================================================================
-// 7. VIEWS (TRANG CHỦ DASHBOARD + CÁC MỤC TÁCH BIỆT)
+// 7. VIEWS
 // =========================================================================
-
-// TRANG CHỦ DASHBOARD (GỌN GÀNG - KHÔNG LẶP DỰ DỮ LIỆU)
 function renderHome() {
   const streak = updateStreak();
   const favs = getFavorites();
@@ -11812,7 +11887,6 @@ function renderHome() {
       <h1 style="font-family:'Noto Serif SC',serif;font-size:32px;font-weight:700;margin-bottom:12px">Lộ Trình Chinh Phục HSK 3.0</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.85);max-width:540px;margin:0 auto 24px;line-height:1.6">Luyện tập từ vựng & ngữ pháp mỗi ngày qua Flashcard, phản xạ Trắc nghiệm và Mô phỏng nét vẽ.</p>
       
-      <!-- Ô Tìm kiếm Real-time -->
       <div style="max-width:480px;margin:0 auto 20px">
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tra nhanh Hán tự, Pinyin hoặc Tiếng Việt..." value="${state.searchQuery}">
       </div>
@@ -11874,7 +11948,6 @@ function renderSearchResults() {
   </div>`;
 }
 
-// MỤC HSK 3.0 (CHỨA ĐẦY ĐỦ BÀI HỌC)
 function renderHSK30View() {
   const reviewCard = (num, words, act, cls = '') => 
     `<div class="lesson-card review-card ${cls}" data-action="${act}">
@@ -11883,8 +11956,8 @@ function renderHSK30View() {
       <div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div>
     </div>`;
 
-  let cards1 = HSK1.map(l => `<div class="lesson-card" data-lesson="${l.id}" data-lv="hsk1"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
-  let cards2 = HSK2.map(l => `<div class="lesson-card hsk2" data-lesson="${l.id}" data-lv="hsk2"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
+  let cards1 = typeof HSK1 !== 'undefined' ? HSK1.map(l => `<div class="lesson-card" data-lesson="${l.id}" data-lv="hsk1"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('') : '';
+  let cards2 = typeof HSK2 !== 'undefined' ? HSK2.map(l => `<div class="lesson-card hsk2" data-lesson="${l.id}" data-lv="hsk2"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('') : '';
 
   return `<div class="fade-in">
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:16px;scrollbar-width:none">
@@ -11899,7 +11972,48 @@ function renderHSK30View() {
   </div>`;
 }
 
-// TRANG GIỚI THIỆU GIÁO VIÊN VỚI KHUNG AVATAR BẰNG ẢNH THẬT
+function renderLevel() {
+  if (['hsk4', 'hsk5', 'hsk6', 'hsk79'].includes(state.level)) {
+    return renderSetLevelView();
+  }
+  
+  const lessons = getLessons();
+  const lvNum = state.level.replace('hsk', '');
+  const colorCls = state.level === 'hsk2' ? ' hsk2' : state.level === 'hsk3' ? ' hsk3' : '';
+  const total = getTotal(lessons);
+  const reviewCard = `<div class="lesson-card review-card ${colorCls}" data-action="open-review"><div class="lesson-num" style="color:var(--gold)">⭐ Tổng ôn từ vựng</div><div class="lesson-title-cn">HSK ${lvNum}</div><div class="lesson-title-vi">Flashcard · Trắc nghiệm · Điền từ</div></div>`;
+  
+  let cards = (lessons || []).map(l => `<div class="lesson-card ${colorCls}" data-lesson="${l.id}" data-lv="${state.level}"><div class="lesson-num">第${l.id}课 · Bài ${l.id}</div><div class="lesson-title-cn">${l.title}</div><div class="lesson-title-vi">${l.titleVi}</div><div class="lesson-meta"><span class="lesson-tag">${l.words.length} từ</span></div></div>`).join('');
+
+  return `<div class="fade-in">
+    <button class="back-btn" data-action="back">← Quay lại</button>
+    <div style="text-align:center;padding:10px 20px 24px">
+      <div class="section-title" style="justify-content:center;border:none;margin:0 0 8px"><span class="badge badge-${state.level}">HSK ${lvNum}</span> <span style="font-family:Noto Serif SC,serif">新HSK教程 ${lvNum}</span></div>
+      <p style="font-size:14px;color:var(--ink-light)">${total} từ vựng · ${lessons.length} bài học</p>
+    </div>
+    <div class="lesson-grid">${reviewCard}${cards}</div>
+  </div>`;
+}
+
+function renderSetLevelView() {
+  const d = getHSKSetData(state.level);
+  let cards = d.sets.map(s => `<div class="lesson-card ${state.level === 'hsk79' ? 'hsk79' : ''}" style="border-left:3px solid ${d.color}" data-hskset="${s.id}">
+    <div class="lesson-num" style="color:${d.color}">Mục ${s.id}</div>
+    <div class="lesson-title-cn" style="font-size:17px">Từ ${s.start} – ${s.end}</div>
+    <div class="lesson-title-vi" style="font-size:12px">${s.words.slice(0, 5).map(w => w.h || w.hanzi).join(' · ')}…</div>
+    <div class="lesson-meta"><span class="lesson-tag" style="background:${d.bg};color:${d.color}">${s.words.length} từ</span></div>
+  </div>`).join('');
+
+  return `<div class="fade-in">
+    <button class="back-btn" data-action="back">← Quay lại</button>
+    <div style="text-align:center;padding:10px 20px 24px">
+      <div class="section-title" style="justify-content:center;border:none;margin:0 0 8px"><span class="badge" style="background:${d.color}">HSK ${d.num}</span> <span style="font-family:Noto Serif SC,serif">Từ vựng HSK ${d.num}</span></div>
+      <p style="font-size:14px;color:var(--ink-light)">${d.all.length} từ · ${d.sets.length} mục · Mỗi mục 20 từ</p>
+    </div>
+    <div class="lesson-grid">${cards}</div>
+  </div>`;
+}
+
 function renderTeacherView() {
   const t = TEACHER_INFO;
   const cardsHtml = t.highlights.map(item => `
@@ -11995,6 +12109,51 @@ function renderLesson() {
   </div>`;
 }
 
+function renderSetDetail() {
+  const d = getHSKSetData(state.level);
+  const s = d.sets.find(x => x.id === state.lessonId);
+  if (!s) return '';
+
+  if (!state.quizQuestions.length && state.mode === 'meaning') {
+    buildQuiz(s.words, d.all, 'meaning');
+  }
+
+  return `<div class="fade-in">
+    <button class="back-btn" data-action="back">← Quay lại</button>
+    <div class="lesson-view-title" style="font-size:26px">${state.level.toUpperCase()} · Mục ${s.id} <span style="font-size:16px;color:var(--ink-light)">(từ ${s.start}–${s.end})</span></div>
+    <div class="lesson-view-sub">${s.words.length} từ vựng</div>
+    <div class="mode-tabs">
+      <button class="mode-tab ${state.mode === 'list' ? 'active' : ''}" data-mode="list">📋 Danh sách</button>
+      <button class="mode-tab ${state.mode === 'flashcard' ? 'active' : ''}" data-mode="flashcard">🃏 Lật thẻ</button>
+      <button class="mode-tab ${state.mode === 'meaning' ? 'active' : ''}" data-mode="meaning">✏️ Trắc nghiệm</button>
+    </div>
+    ${state.mode === 'list' ? renderWordListUI(s.words) : ''}
+    ${state.mode === 'flashcard' ? renderFlashcardUI(s.words, 'fc-shuffle-set') : ''}
+    ${state.mode === 'meaning' ? renderQuizUI('quiz-restart-set') : ''}
+  </div>`;
+}
+
+function renderReview() {
+  const allWords = getLevelWords(state.level);
+  if (!state.quizQuestions.length && state.rMode === 'meaning') {
+    buildQuiz(allWords, allWords, 'meaning');
+  }
+
+  return `<div class="fade-in">
+    <button class="back-btn" data-action="back">← Quay lại</button>
+    <div class="lesson-view-title">⭐ Tổng ôn từ vựng ${state.level.toUpperCase()}</div>
+    <div class="lesson-view-sub">${allWords.length} từ vựng</div>
+    <div class="mode-tabs">
+      <button class="mode-tab ${state.rMode === 'list' ? 'active' : ''}" data-rmode="list">📋 Danh sách</button>
+      <button class="mode-tab ${state.rMode === 'flashcard' ? 'active' : ''}" data-rmode="flashcard">🃏 Lật thẻ</button>
+      <button class="mode-tab ${state.rMode === 'meaning' ? 'active' : ''}" data-rmode="meaning">✏️ Trắc nghiệm</button>
+    </div>
+    ${state.rMode === 'list' ? renderWordListUI(allWords) : ''}
+    ${state.rMode === 'flashcard' ? renderFlashcardUI(allWords, 'fc-shuffle-review') : ''}
+    ${state.rMode === 'meaning' ? renderQuizUI('quiz-restart-review') : ''}
+  </div>`;
+}
+
 // ROUTER MAP
 const viewRoutes = {
   home: renderHome,
@@ -12002,7 +12161,10 @@ const viewRoutes = {
   teacher: renderTeacherView,
   mySaved: renderMySavedView,
   devProducts: renderDevProductsView,
-  lesson: renderLesson
+  level: renderLevel,
+  lesson: renderLesson,
+  setDetail: renderSetDetail,
+  review: renderReview
 };
 
 function render() {
@@ -12033,7 +12195,6 @@ function initEvents() {
   app.addEventListener('click', e => {
     const t = e.target;
 
-    // Toggle Bookmark
     const favBtn = t.closest('[data-fav]');
     if (favBtn) {
       e.stopPropagation();
@@ -12041,7 +12202,6 @@ function initEvents() {
       return;
     }
 
-    // Speak
     if (t.closest('[data-speak]')) {
       e.stopPropagation();
       speak(t.closest('[data-speak]').dataset.speak);
@@ -12049,13 +12209,12 @@ function initEvents() {
     }
 
     const wordItem = t.closest('.word-item');
-    if (wordItem && !t.closest('.audio-btn') && !t.closest('.stroke-play') && !t.closest('.fav-btn')) {
+    if (wordItem && !t.closest('.audio-btn') && !t.closest('.ex-speak-btn') && !t.closest('.stroke-play') && !t.closest('.fav-btn')) {
       const hanzi = wordItem.querySelector('.word-hanzi');
       if (hanzi) toggleWordStrokes(wordItem, hanzi.textContent.trim());
       return;
     }
 
-    // Nav Click
     const navBtn = t.closest('[data-nav]');
     if (navBtn) {
       const nav = navBtn.dataset.nav;
@@ -12065,7 +12224,18 @@ function initEvents() {
       return;
     }
 
-    // Lessons Click
+    const selectLv = t.closest('[data-select-level]');
+    if (selectLv) {
+      state.level = selectLv.dataset.selectLevel;
+      state.view = 'level';
+      state.lessonId = null;
+      state.quizQuestions = [];
+      state.fcShuffled = [];
+      render(); 
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const lessonCard = t.closest('[data-lesson]');
     if (lessonCard) {
       if (lessonCard.dataset.lv) state.level = lessonCard.dataset.lv;
@@ -12076,7 +12246,15 @@ function initEvents() {
       return;
     }
 
-    // Modes & Review Switch
+    const setCard = t.closest('[data-hskset]');
+    if (setCard) {
+      state.view = 'setDetail';
+      state.lessonId = parseInt(setCard.dataset.hskset);
+      state.mode = 'list'; state.fcShuffled = []; state.quizQuestions = [];
+      render(); window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const modeBtn = t.closest('[data-mode]');
     if (modeBtn) {
       state.mode = modeBtn.dataset.mode;
@@ -12084,11 +12262,17 @@ function initEvents() {
       render(); return;
     }
 
-    // Actions
+    const rmodeBtn = t.closest('[data-rmode]');
+    if (rmodeBtn) {
+      state.rMode = rmodeBtn.dataset.rmode;
+      state.fcShuffled = []; state.quizQuestions = [];
+      render(); return;
+    }
+
     const actionBtn = t.closest('[data-action]');
     if (actionBtn) {
       const act = actionBtn.dataset.action;
-      if (act === 'back') { state.view = 'home'; state.lessonId = null; render(); }
+      if (act === 'back') { state.view = state.lessonId ? 'level' : 'home'; state.lessonId = null; render(); }
       if (act === 'flip') {
         state.fcFlipped = !state.fcFlipped;
         const inner = app.querySelector('.flashcard-inner');
@@ -12099,13 +12283,19 @@ function initEvents() {
       if (act.startsWith('fc-shuffle')) {
         state.fcShuffled = shuffle(state.fcShuffled); state.fcIndex = 0; state.fcFlipped = false; render();
       }
+      if (act.startsWith('open-review')) {
+        if (act === 'open-review2') state.level = 'hsk2';
+        else if (act === 'open-review3') state.level = 'hsk3';
+        else if (act === 'open-review') state.level = 'hsk1';
+        state.view = 'review'; state.rMode = 'list'; state.fcShuffled = []; state.quizQuestions = [];
+        render(); window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
       if (act.startsWith('quiz-restart')) {
         state.quizQuestions = []; render();
       }
       return;
     }
 
-    // Quiz Option Click
     const quizOpt = t.closest('[data-quiz-opt]');
     if (quizOpt && !state.quizAnswered) {
       const idx = parseInt(quizOpt.dataset.quizOpt);
@@ -12127,9 +12317,8 @@ function initEvents() {
     }
   });
 
-  // Keyboard Shortcuts
   document.addEventListener('keydown', e => {
-    if (['flashcard', 'review', 'lesson'].includes(state.view)) {
+    if (['flashcard', 'review', 'lesson', 'setDetail'].includes(state.view)) {
       if (['Space', 'ArrowUp', 'ArrowDown'].includes(e.code)) {
         e.preventDefault();
         state.fcFlipped = !state.fcFlipped;
